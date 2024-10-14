@@ -27,7 +27,7 @@ jobs:
         id: meta_all_in_one
         uses: docker/metadata-action@v3
         with:
-          images: daveearley/hi.events-all-in-one
+          images: grablair/hi.events-all-in-one
 
       - name: Build and push All-in-one Docker image
         uses: docker/build-push-action@v3
@@ -43,7 +43,7 @@ jobs:
         id: meta_backend
         uses: docker/metadata-action@v3
         with:
-          images: daveearley/hi.events-backend
+          images: grablair/hi.events-backend
 
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v3
@@ -59,7 +59,7 @@ jobs:
         id: meta_frontend
         uses: docker/metadata-action@v3
         with:
-          images: daveearley/hi.events-frontend
+          images: grablair/hi.events-frontend
 
       - name: Build and push Frontend Docker image
         uses: docker/build-push-action@v3
