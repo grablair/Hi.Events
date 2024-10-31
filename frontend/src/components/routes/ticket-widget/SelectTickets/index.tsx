@@ -330,7 +330,7 @@ const SelectTickets = (props: SelectTicketsProps) => {
                                                 )}
 
                                                 <span className={'hi-ticket-collapse-arrow'}>
-                                                    {ticketIsCollapsed ? '\u25BC' : '\u25B6'}
+                                                    {ticketIsCollapsed ? '\u25BC&#xFE0E;' : '\u25B6&#xFE0E;'}
                                                 </span>
                                             </div>
                                         </UnstyledButton>
