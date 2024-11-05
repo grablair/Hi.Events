@@ -46,8 +46,8 @@ msgid "{0} available"
 msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:155
-msgid "{0} checked in"
-msgstr ""
+#~ msgid "{0} checked in"
+#~ msgstr ""
 
 #: src/components/modals/CreateTaxOrFeeModal/index.tsx:32
 msgid "{0} created successfully"
@@ -65,7 +65,7 @@ msgstr ""
 #~ msgid "{0}{1}"
 #~ msgstr ""
 
-#: src/components/layouts/CheckIn/index.tsx:343
+#: src/components/layouts/CheckIn/index.tsx:342
 msgid "{0}/{1} checked in"
 msgstr ""
 
@@ -257,7 +257,7 @@ msgstr ""
 #~ msgid "About hi.events"
 #~ msgstr ""
 
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:79
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:87
 msgid "About the event"
 msgstr ""
 
@@ -493,7 +493,7 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:401
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:400
 msgid "applied"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgstr ""
 #~ msgid "Apply"
 #~ msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:429
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:428
 msgid "Apply Promo Code"
 msgstr ""
 
@@ -718,7 +718,7 @@ msgstr ""
 msgid "California"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:140
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:196
 msgid "Camera permission was denied. <0>Request Permission</0> again, or if this doesn't work, you will need to <1>grant this page</1> access to your camera in your browser settings."
 msgstr ""
 
@@ -784,18 +784,17 @@ msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:54
 #: src/components/common/AttendeeCheckInTable/index.tsx:81
-msgid "check in"
-msgstr ""
+#~ msgid "check in"
+#~ msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/index.tsx:152
 #: src/components/layouts/CheckIn/index.tsx:177
 msgid "Check In"
 msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:54
 #: src/components/common/AttendeeCheckInTable/index.tsx:81
-msgid "check out"
-msgstr ""
+#~ msgid "check out"
+#~ msgstr ""
 
 #: src/components/layouts/CheckIn/index.tsx:177
 msgid "Check Out"
@@ -817,11 +816,11 @@ msgstr ""
 msgid "Check-In List deleted successfully"
 msgstr ""
 
-#: src/components/layouts/CheckIn/index.tsx:218
+#: src/components/layouts/CheckIn/index.tsx:217
 msgid "Check-in list has expired"
 msgstr ""
 
-#: src/components/layouts/CheckIn/index.tsx:235
+#: src/components/layouts/CheckIn/index.tsx:234
 msgid "Check-in list is not active"
 msgstr ""
 
@@ -846,7 +845,6 @@ msgstr ""
 msgid "Checkboxes"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/index.tsx:124
 #: src/components/common/AttendeeDetails/index.tsx:38
 msgid "Checked In"
 msgstr ""
@@ -901,7 +899,7 @@ msgstr ""
 msgid "Click to copy"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:151
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:207
 #: src/components/modals/RefundOrderModal/index.tsx:123
 msgid "Close"
 msgstr ""
@@ -1023,7 +1021,7 @@ msgstr ""
 #: src/components/common/WidgetEditor/index.tsx:31
 #: src/components/common/WidgetEditor/index.tsx:217
 #: src/components/layouts/Checkout/CheckoutFooter/index.tsx:50
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:387
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:386
 msgid "Continue"
 msgstr ""
 
@@ -1806,7 +1804,7 @@ msgstr ""
 msgid "Fixed amount"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:92
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:144
 msgid "Flash is not available on this device"
 msgstr ""
 
@@ -1882,7 +1880,7 @@ msgstr ""
 msgid "Guests"
 msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:396
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:395
 msgid "Have a promo code?"
 msgstr ""
 
@@ -1937,7 +1935,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/forms/TicketForm/index.tsx:289
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:365
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:364
 msgid "Hide"
 msgstr ""
 
@@ -2165,6 +2163,10 @@ msgstr ""
 #: src/components/modals/CreateAttendeeModal/index.tsx:122
 msgid "Johnson"
 msgstr ""
+
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:85
+msgid "Jump to Pricing"
+msgstr "Перейти к Ценам"
 
 #: src/components/modals/CreateEventModal/index.tsx:104
 #~ msgid "KittenTech Conference {0}"
@@ -2543,8 +2545,8 @@ msgid "Not available"
 msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:125
-msgid "Not Checked In"
-msgstr ""
+#~ msgid "Not Checked In"
+#~ msgstr ""
 
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:80
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:143
@@ -3078,11 +3080,11 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:405
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:404
 msgid "remove"
 msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:406
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:405
 msgid "Remove"
 msgstr ""
 
@@ -3198,15 +3200,12 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/index.tsx:173
-#: src/components/common/AttendeeCheckInTable/index.tsx:175
-#: src/components/layouts/CheckIn/index.tsx:293
-#: src/components/layouts/CheckIn/index.tsx:295
+#: src/components/layouts/CheckIn/index.tsx:292
+#: src/components/layouts/CheckIn/index.tsx:294
 msgid "Scan QR Code"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/index.tsx:169
-#: src/components/layouts/CheckIn/index.tsx:289
+#: src/components/layouts/CheckIn/index.tsx:288
 msgid "Seach by name, order #, attendee # or email..."
 msgstr ""
 
@@ -3283,7 +3282,7 @@ msgstr ""
 msgid "Secondary Text Color"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:172
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:234
 msgid "Select Camera"
 msgstr ""
 
@@ -3411,7 +3410,7 @@ msgstr ""
 msgid "Show hidden questions"
 msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:365
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:364
 msgid "Show more"
 msgstr ""
 
@@ -3565,8 +3564,8 @@ msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:47
 #: src/components/common/AttendeeCheckInTable/index.tsx:71
-msgid "Successfully checked <0>{0} {1}</0> {2}"
-msgstr ""
+#~ msgid "Successfully checked <0>{0} {1}</0> {2}"
+#~ msgstr ""
 
 #: src/components/routes/profile/ConfirmEmailAddress/index.tsx:23
 msgid "Successfully confirmed email address"
@@ -3747,7 +3746,7 @@ msgstr ""
 #~ msgid "The location of your event"
 #~ msgstr ""
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:351
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:350
 msgid "The maximum numbers number of tickets for {0}is {1}"
 msgstr ""
 
@@ -3839,7 +3838,7 @@ msgstr ""
 msgid "This check-in list has expired"
 msgstr ""
 
-#: src/components/layouts/CheckIn/index.tsx:223
+#: src/components/layouts/CheckIn/index.tsx:222
 msgid "This check-in list has expired and is no longer available for check-ins."
 msgstr ""
 
@@ -3851,7 +3850,7 @@ msgstr ""
 msgid "This check-in list is not active yet"
 msgstr ""
 
-#: src/components/layouts/CheckIn/index.tsx:240
+#: src/components/layouts/CheckIn/index.tsx:239
 msgid "This check-in list is not yet active and is not available for check-ins."
 msgstr ""
 
@@ -4150,8 +4149,8 @@ msgstr ""
 
 #: src/components/common/AttendeeCheckInTable/index.tsx:54
 #: src/components/common/AttendeeCheckInTable/index.tsx:81
-msgid "Unable to {0} attendee"
-msgstr ""
+#~ msgid "Unable to {0} attendee"
+#~ msgstr ""
 
 #: src/components/layouts/CheckIn/index.tsx:96
 #: src/components/layouts/CheckIn/index.tsx:130
@@ -4455,7 +4454,7 @@ msgstr ""
 msgid "Yes, remove them"
 msgstr ""
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:58
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:78
 msgid "You already scanned this ticket"
 msgstr ""
 
