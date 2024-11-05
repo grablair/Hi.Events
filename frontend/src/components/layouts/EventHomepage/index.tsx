@@ -76,7 +76,7 @@ const EventHomepage = ({colors, continueButtonText, backgroundType, ...loaderDat
                             <EventInformation event={event}/>
                         </div>
 
-                        <div className={classes.ticketContainer}>
+                        <div id={"hi-select-ticket-section"} className={classes.ticketContainer}>
                             <h2>{t`Tickets`}</h2>
                             <div className={classes.ticketSelection}>
                                 <SelectTickets

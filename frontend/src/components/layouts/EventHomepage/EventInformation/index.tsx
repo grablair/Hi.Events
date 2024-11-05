@@ -76,6 +76,14 @@ export const EventInformation: FC<{
 
             {event?.description && (
                 <div className={classes.eventDescription}>
+                    <Button 
+                        onClick={() => {
+                            const releventDiv = document.getElementById("hi-select-ticket-section");
+                            releventDiv.scrollIntoView({behavior: "smooth"});
+                        }}
+                    >
+                        {t`Jump to Pricing`}
+                    </Button>
                     <h2>{t`About the event`}</h2>
                     <div dangerouslySetInnerHTML={{
                         __html: event.description || '',

@@ -84,4 +84,17 @@
   h2 {
     margin-top: 0;
   }
+
+  button {
+    background-color: var(--homepage-secondary-color, var(--tk-primary));
+    color: var(--homepage-secondary-text-color, var(--tk-primary));
+    margin-bottom: 13px;
+
+    &:hover {
+      background-color: var(--homepage-secondary-color, var(--tk-primary));
+      color: var(--homepage-secondary-text-color, var(--tk-primary));
+    }
+  }
 }
+
+
