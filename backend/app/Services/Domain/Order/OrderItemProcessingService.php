@@ -73,21 +73,24 @@ readonly class OrderItemProcessingService
         $sortedTicketPrices = $ticketPrices->sortByDesc('savingsPerTicket');
 
         # Limit the promo code to the number of tickets configured. The tickets with the most savings should be prioritized.
-        if ($promoCode && $promoCode->getTicketLimitPerUse()) {
-            $ticketsRemaining = $promoCode->getTicketLimitPerUse();
-
-            $sortedTicketPrices->transform(function (array $ticketPrice, int $key) use (&$ticketsRemaining) {
-                if ($ticketPrice['quantity'] > $ticketsRemaining) {
-                    $ticketPrice['discountedQuantity'] = $ticketsRemaining;
-                    $ticketsRemaining = 0;
-                } else {
-                    $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
-                    $ticketsRemaining -= $ticketPrice['quantity'];
-                }
-
+        $ticketsRemaining = $promoCode->getTicketLimitPerUse();
+        $sortedTicketPrices->transform(function (array $ticketPrice, int $key) use (&$ticketsRemaining) {
+            if ($ticketPrice['priceBeforeDiscount'] == null) {
                 return $ticketPrice;
-            });
-        }
+            }
+
+            if ($ticketsRemaining == null) {
+                $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
+            } elseif ($ticketPrice['quantity'] > $ticketsRemaining) {
+                $ticketPrice['discountedQuantity'] = $ticketsRemaining;
+                $ticketsRemaining = 0;
+            } else {
+                $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
+                $ticketsRemaining -= $ticketPrice['quantity'];
+            }
+
+            return $ticketPrice;
+        });
 
         $orderItems = $sortedTicketPrices->flatMap(function (array $ticketPrice, int $key) use ($order) {
             $result = collect();
