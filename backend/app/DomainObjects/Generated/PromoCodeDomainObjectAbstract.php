@@ -23,6 +23,7 @@ abstract class PromoCodeDomainObjectAbstract extends \HiEvents\DomainObjects\Abs
     final public const CREATED_AT = 'created_at';
     final public const UPDATED_AT = 'updated_at';
     final public const DELETED_AT = 'deleted_at';
+    final public const TICKET_LIMIT_PER_USE = 'ticket_limit_per_use';
 
     protected int $id;
     protected int $event_id;
@@ -37,6 +38,7 @@ abstract class PromoCodeDomainObjectAbstract extends \HiEvents\DomainObjects\Abs
     protected string $created_at;
     protected ?string $updated_at = null;
     protected ?string $deleted_at = null;
+    protected ?int $ticket_limit_per_use = null;
 
     public function toArray(): array
     {
@@ -54,6 +56,7 @@ abstract class PromoCodeDomainObjectAbstract extends \HiEvents\DomainObjects\Abs
                     'created_at' => $this->created_at ?? null,
                     'updated_at' => $this->updated_at ?? null,
                     'deleted_at' => $this->deleted_at ?? null,
+                    'ticket_limit_per_use' => $this->ticket_limit_per_use ?? null,
                 ];
     }
 
@@ -198,5 +201,16 @@ abstract class PromoCodeDomainObjectAbstract extends \HiEvents\DomainObjects\Abs
     public function getDeletedAt(): ?string
     {
         return $this->deleted_at;
+    }
+
+    public function setTicketLimitPerUse(?int $ticket_limit_per_use): self
+    {
+        $this->ticket_limit_per_use = $ticket_limit_per_use;
+        return $this;
+    }
+
+    public function getTicketLimitPerUse(): ?int
+    {
+        return $this->ticket_limit_per_use;
     }
 }

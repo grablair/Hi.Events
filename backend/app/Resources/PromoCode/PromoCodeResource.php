@@ -25,6 +25,7 @@ class PromoCodeResource extends JsonResource
             'attendee_usage_count' => $this->getAttendeeUsageCount(),
             'order_usage_count' => $this->getOrderUsageCount(),
             'max_allowed_usages' => $this->getMaxAllowedUsages(),
+            'ticket_limit_per_use' => $this->getTicketLimitPerUse(),
         ];
     }
 }
