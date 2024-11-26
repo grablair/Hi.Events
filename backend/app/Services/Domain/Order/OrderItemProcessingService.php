@@ -73,24 +73,30 @@ readonly class OrderItemProcessingService
         $sortedTicketPrices = $ticketPrices->sortByDesc('savingsPerTicket');
 
         # Limit the promo code to the number of tickets configured. The tickets with the most savings should be prioritized.
-        $ticketsRemaining = $promoCode->getTicketLimitPerUse();
-        $sortedTicketPrices->transform(function (array $ticketPrice, int $key) use (&$ticketsRemaining) {
-            if ($ticketPrice['priceBeforeDiscount'] == null) {
+        if ($promoCode) {
+            $ticketsRemaining = $promoCode->getTicketLimitPerUse();
+            $sortedTicketPrices->transform(function (array $ticketPrice, int $key) use (&$ticketsRemaining) {
+                if ($ticketPrice['priceBeforeDiscount'] == null) {
+                    # ticket is not discountable
+                    return $ticketPrice;
+                }
+
+                if ($ticketsRemaining === null) {
+                    # there is no per-use ticket limit imposed
+                    $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
+                } elseif ($ticketPrice['quantity'] > $ticketsRemaining) {
+                    # use up the remaining discountable quantity
+                    $ticketPrice['discountedQuantity'] = $ticketsRemaining;
+                    $ticketsRemaining = 0;
+                } else {
+                    # discount all of the tickets
+                    $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
+                    $ticketsRemaining -= $ticketPrice['quantity'];
+                }
+
                 return $ticketPrice;
-            }
-
-            if ($ticketsRemaining == null) {
-                $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
-            } elseif ($ticketPrice['quantity'] > $ticketsRemaining) {
-                $ticketPrice['discountedQuantity'] = $ticketsRemaining;
-                $ticketsRemaining = 0;
-            } else {
-                $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
-                $ticketsRemaining -= $ticketPrice['quantity'];
-            }
-
-            return $ticketPrice;
-        });
+            });
+        }
 
         $orderItems = $sortedTicketPrices->flatMap(function (array $ticketPrice, int $key) use ($order) {
             $result = collect();
