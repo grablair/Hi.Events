@@ -33,6 +33,7 @@ export const EditPromoCodeModal = ({onClose, promoCodeId}: EditPromoCodeModalPro
             expiry_date: undefined,
             discount_type: undefined,
             max_allowed_usages: undefined,
+            ticket_limit_per_use: undefined
         },
         validate: {
             code: hasLength({min: 3, max: 50}, t`Code must be between 3 and 50 characters long`),
@@ -69,6 +70,7 @@ export const EditPromoCodeModal = ({onClose, promoCodeId}: EditPromoCodeModalPro
             expiry_date: utcToTz(promoCode.expiry_date, event.timezone),
             discount_type: promoCode.discount_type,
             max_allowed_usages: promoCode.max_allowed_usages || undefined,
+            ticket_limit_per_use: promoCode.ticket_limit_per_use || undefined,
         });
     }, [promoCode, event]);
 

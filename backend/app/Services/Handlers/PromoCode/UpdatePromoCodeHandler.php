@@ -57,6 +57,7 @@ readonly class UpdatePromoCodeHandler
                 ? DateHelper::convertToUTC($promoCodeDTO->expiry_date, $event->getTimezone())
                 : null,
             PromoCodeDomainObjectAbstract::MAX_ALLOWED_USAGES => $promoCodeDTO->max_allowed_usages,
+            PromoCodeDomainObjectAbstract::TICKET_LIMIT_PER_USE => $promoCodeDTO->ticket_limit_per_use,
             PromoCodeDomainObjectAbstract::APPLICABLE_TICKET_IDS => $promoCodeDTO->applicable_ticket_ids,
         ]);
     }

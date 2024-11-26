@@ -51,6 +51,7 @@ class CreatePromoCodeService
                 : null,
             PromoCodeDomainObjectAbstract::MAX_ALLOWED_USAGES => $promoCode->getMaxAllowedUsages(),
             PromoCodeDomainObjectAbstract::APPLICABLE_TICKET_IDS => $promoCode->getApplicableTicketIds(),
+            PromoCodeDomainObjectAbstract::TICKET_LIMIT_PER_USE => $promoCode->getTicketLimitPerUse(),
         ]);
     }
 

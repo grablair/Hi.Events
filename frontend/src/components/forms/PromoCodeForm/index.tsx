@@ -86,6 +86,13 @@ export const PromoCodeForm = ({form}: PromoCodeFormProps) => {
                              {...form.getInputProps('max_allowed_usages')}
                              label={t`How many times can this code be used?`}/>
             </InputGroup>
+
+            <InputGroup>
+                <NumberInput min={1}
+                             placeholder={t`Unlimited`}
+                             {...form.getInputProps('ticket_limit_per_use')}
+                             label={t`How many tickets can be discounted per order with this code?`}/>
+            </InputGroup>
         </>
     );
 };

@@ -44,7 +44,7 @@ readonly class OrderItemProcessingService
         ?PromoCodeDomainObject $promoCode
     ): Collection
     {
-        $orderItems = collect();
+        $ticketPrices = collect();
 
         foreach ($ticketsOrderDetails as $ticketOrderDetail) {
             $ticket = $this->ticketRepository
@@ -61,41 +61,122 @@ readonly class OrderItemProcessingService
                 );
             }
 
-            $ticketOrderDetail->quantities->each(function (OrderTicketPriceDTO $ticketPrice) use ($promoCode, $order, $orderItems, $ticket) {
+            $ticketOrderDetail->quantities->each(function (OrderTicketPriceDTO $ticketPrice) use ($promoCode, $order, $ticketPrices, $ticket) {
                 if ($ticketPrice->quantity === 0) {
                     return;
                 }
-                $orderItemData = $this->calculateOrderItemData($ticket, $ticketPrice, $order, $promoCode);
-                $orderItems->push($this->orderRepository->addOrderItem($orderItemData));
+                $ticketPrices->push($this->getPricesForTicket($ticket, $ticketPrice, $promoCode));
             });
         }
+
+        # Sort by savings per ticket, descending
+        $sortedTicketPrices = $ticketPrices->sortByDesc('savingsPerTicket');
+
+        # Limit the promo code to the number of tickets configured. The tickets with the most savings should be prioritized.
+        if ($promoCode && $promoCode->getTicketLimitPerUse()) {
+            $ticketsRemaining = $promoCode->getTicketLimitPerUse();
+
+            $sortedTicketPrices->transform(function (array $ticketPrice, int $key) use (&$ticketsRemaining) {
+                if ($ticketPrice['quantity'] > $ticketsRemaining) {
+                    $ticketPrice['discountedQuantity'] = $ticketsRemaining;
+                    $ticketsRemaining = 0;
+                } else {
+                    $ticketPrice['discountedQuantity'] = $ticketPrice['quantity'];
+                    $ticketsRemaining -= $ticketPrice['quantity'];
+                }
+
+                return $ticketPrice;
+            });
+        }
+
+        $orderItems = $sortedTicketPrices->flatMap(function (array $ticketPrice, int $key) use ($order) {
+            $result = collect();
+
+            if ($ticketPrice['priceBeforeDiscount'] == null) {
+                $orderItemData = $this->calculateOrderItemData(
+                    null,
+                    $ticketPrice['priceWithDiscount'],
+                    $ticketPrice['quantity'] - $ticketPrice['discountedQuantity'],
+                    $ticketPrice['ticket'],
+                    $ticketPrice['ticketPriceDetails'],
+                    $order
+                );
+                $result->push($this->orderRepository->addOrderItem($orderItemData));
+            } else {
+                if ($ticketPrice['discountedQuantity'] > 0) {
+                    $orderItemData = $this->calculateOrderItemData(
+                        $ticketPrice['priceBeforeDiscount'],
+                        $ticketPrice['priceWithDiscount'],
+                        $ticketPrice['discountedQuantity'],
+                        $ticketPrice['ticket'],
+                        $ticketPrice['ticketPriceDetails'],
+                        $order
+                    );
+                    $result->push($this->orderRepository->addOrderItem($orderItemData));
+                }
+
+                if ($ticketPrice['quantity'] - $ticketPrice['discountedQuantity'] > 0) {
+                    $orderItemData = $this->calculateOrderItemData(
+                        null,
+                        $ticketPrice['priceBeforeDiscount'],
+                        $ticketPrice['quantity'] - $ticketPrice['discountedQuantity'],
+                        $ticketPrice['ticket'],
+                        $ticketPrice['ticketPriceDetails'],
+                        $order
+                    );
+                    $result->push($this->orderRepository->addOrderItem($orderItemData));
+                }
+            }
+
+            return $result;
+        });
 
         return $orderItems;
     }
 
-    private function calculateOrderItemData(
+    private function getPricesForTicket(
         TicketDomainObject     $ticket,
         OrderTicketPriceDTO    $ticketPriceDetails,
-        OrderDomainObject      $order,
         ?PromoCodeDomainObject $promoCode
     ): array
     {
         $prices = $this->ticketPriceService->getPrice($ticket, $ticketPriceDetails, $promoCode);
         $priceWithDiscount = $prices->price;
         $priceBeforeDiscount = $prices->price_before_discount;
+        $savingsPerTicket = ($prices->price_before_discount - $prices->price);
 
-        $itemTotalWithDiscount = $priceWithDiscount * $ticketPriceDetails->quantity;
+        return [
+            'ticket' => $ticket,
+            'ticketPriceDetails' => $ticketPriceDetails,
+            'priceBeforeDiscount' => $priceBeforeDiscount,
+            'priceWithDiscount' => $priceWithDiscount,
+            'savingsPerTicket' => $savingsPerTicket,
+            'quantity' => $ticketPriceDetails->quantity,
+            'discountedQuantity' => 0,
+        ];
+    }
+
+    private function calculateOrderItemData(
+        ?float              $priceBeforeDiscount,
+        float               $priceWithDiscount,
+        int                 $quantity,
+        TicketDomainObject  $ticket,
+        OrderTicketPriceDTO $ticketPriceDetails,
+        OrderDomainObject   $order
+    ): array
+    {
+        $itemTotalWithDiscount = $priceWithDiscount * $quantity;
 
         $taxesAndFees = $this->taxCalculationService->calculateTaxAndFeesForTicket(
             ticket: $ticket,
             price: $priceWithDiscount,
-            quantity: $ticketPriceDetails->quantity
+            quantity: $quantity
         );
 
         return [
             'ticket_id' => $ticket->getId(),
             'ticket_price_id' => $ticketPriceDetails->price_id,
-            'quantity' => $ticketPriceDetails->quantity,
+            'quantity' => $quantity,
             'price_before_discount' => $priceBeforeDiscount,
             'total_before_additions' => Currency::round($itemTotalWithDiscount),
             'price' => $priceWithDiscount,

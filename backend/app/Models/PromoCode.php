@@ -25,6 +25,7 @@ class PromoCode extends BaseModel
             PromoCodeDomainObjectAbstract::EXPIRY_DATE,
             PromoCodeDomainObjectAbstract::EVENT_ID,
             PromoCodeDomainObjectAbstract::MAX_ALLOWED_USAGES,
+            PromoCodeDomainObjectAbstract::TICKET_LIMIT_PER_USE,
         ];
     }
 }
