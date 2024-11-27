@@ -587,6 +587,7 @@ export interface PromoCode {
     attendee_usage_count?: number;
     order_usage_count?: number;
     max_allowed_usages?: number | undefined;
+    ticket_limit_per_use?: number | undefined;
 }
 
 export enum PromoCodeDiscountType {

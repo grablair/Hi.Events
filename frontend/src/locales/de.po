@@ -29,7 +29,7 @@ msgstr "{0} <0>erfolgreich eingecheckt</0>"
 msgid "{0} <0>checked out</0> successfully"
 msgstr "{0} <0>erfolgreich ausgecheckt</0>"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:321
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:329
 msgid "{0} available"
 msgstr "{0} verfügbar"
 
@@ -201,7 +201,7 @@ msgstr "Eine einzige Frage pro Bestellung. Z. B.: Wie lautet der Name Ihres Unte
 msgid "A standard tax, like VAT or GST"
 msgstr "Eine Standardsteuer wie Mehrwertsteuer oder GST"
 
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:87
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:79
 msgid "About the event"
 msgstr "Über die Veranstaltung"
 
@@ -405,7 +405,7 @@ msgstr "Alle Anfragen von Ticketinhabern werden an diese E-Mail-Adresse gesendet
 msgid "Appearance"
 msgstr "Aussehen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:400
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:408
 msgid "applied"
 msgstr "angewandt"
 
@@ -417,7 +417,7 @@ msgstr "Gilt für {0} Tickets"
 msgid "Applies to 1 ticket"
 msgstr "Gilt für 1 Ticket"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:428
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:436
 msgid "Apply Promo Code"
 msgstr "Promo-Code anwenden"
 
@@ -744,7 +744,7 @@ msgstr "Stadt"
 msgid "Clear Search Text"
 msgstr "Suchtext löschen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:276
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:277
 msgid "click here"
 msgstr "klicken Sie hier"
 
@@ -767,7 +767,7 @@ msgid "Code"
 msgstr "Code"
 
 #: src/components/modals/CreatePromoCodeModal/index.tsx:26
-#: src/components/modals/EditPromoCodeModal/index.tsx:38
+#: src/components/modals/EditPromoCodeModal/index.tsx:39
 msgid "Code must be between 3 and 50 characters long"
 msgstr "Der Code muss zwischen 3 und 50 Zeichen lang sein"
 
@@ -865,8 +865,8 @@ msgstr "Hintergrundfarbe des Inhalts"
 
 #: src/components/common/WidgetEditor/index.tsx:31
 #: src/components/common/WidgetEditor/index.tsx:217
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:50
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:386
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:36
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:394
 msgid "Continue"
 msgstr "Weitermachen"
 
@@ -1167,7 +1167,7 @@ msgstr "Rabatt in {0}"
 msgid "Discount Type"
 msgstr "Rabattart"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:285
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:286
 msgid "Dismiss"
 msgstr "Zurückweisen"
 
@@ -1277,8 +1277,8 @@ msgstr "Code bearbeiten"
 msgid "Edit Organizer"
 msgstr "Organisator bearbeiten"
 
-#: src/components/modals/EditPromoCodeModal/index.tsx:79
-#: src/components/modals/EditPromoCodeModal/index.tsx:84
+#: src/components/modals/EditPromoCodeModal/index.tsx:81
+#: src/components/modals/EditPromoCodeModal/index.tsx:86
 msgid "Edit Promo Code"
 msgstr "Aktionscode bearbeiten"
 
@@ -1583,7 +1583,6 @@ msgstr "Passwort vergessen?"
 #: src/components/common/OrderSummary/index.tsx:99
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:88
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:102
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:38
 #: src/components/routes/ticket-widget/SelectTickets/Prices/Tiered/index.tsx:54
 msgid "Free"
 msgstr "Frei"
@@ -1633,7 +1632,7 @@ msgstr "Bruttoumsatz"
 msgid "Guests"
 msgstr "Gäste"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:395
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:403
 msgid "Have a promo code?"
 msgstr "Haben Sie einen Promo-Code?"
 
@@ -1684,7 +1683,7 @@ msgid "Hidden questions are only visible to the event organizer and not to the c
 msgstr "Versteckte Fragen sind nur für den Veranstalter und nicht für den Kunden sichtbar."
 
 #: src/components/forms/TicketForm/index.tsx:289
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:364
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:372
 msgid "Hide"
 msgstr "Verstecken"
 
@@ -1752,6 +1751,10 @@ msgstr "Homer"
 msgid "How many minutes the customer has to complete their order. We recommend at least 15 minutes"
 msgstr "Wie viele Minuten hat der Kunde Zeit, um seine Bestellung abzuschließen. Wir empfehlen mindestens 15 Minuten"
 
+#: src/components/forms/PromoCodeForm/index.tsx:94
+msgid "How many tickets can be discounted per order with this code?"
+msgstr "Wie viele Tickets können pro Bestellung mit diesem Code rabattiert werden?"
+
 #: src/components/forms/PromoCodeForm/index.tsx:87
 msgid "How many times can this code be used?"
 msgstr "Wie oft kann dieser Code verwendet werden?"
@@ -1768,7 +1771,7 @@ msgstr "https://example-maps-service.com/..."
 msgid "I agree to the <0>terms and conditions</0>"
 msgstr "Ich stimme den <0>Allgemeinen Geschäftsbedingungen</0> zu"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:272
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:273
 msgid "If a new tab did not open, please  <0><1>{0}</1>.</0>"
 msgstr "Wenn keine neue Registerkarte geöffnet wurde, <0><1>{0}</1>.</0>"
 
@@ -1872,10 +1875,6 @@ msgstr "John"
 #: src/components/modals/CreateAttendeeModal/index.tsx:122
 msgid "Johnson"
 msgstr "Johnson"
-
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:85
-msgid "Jump to Pricing"
-msgstr "Springe zu Preisen"
 
 #: src/components/forms/TicketForm/index.tsx:74
 msgid "Label"
@@ -2465,7 +2464,7 @@ msgstr "Bitte überprüfen Sie Ihre E-Mail, um Ihre E-Mail-Adresse zu bestätige
 msgid "Please complete the form below to accept your invitation"
 msgstr "Bitte füllen Sie das folgende Formular aus, um Ihre Einladung anzunehmen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:270
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:271
 msgid "Please continue in the new tab"
 msgstr "Bitte fahren Sie im neuen Tab fort"
 
@@ -2494,7 +2493,7 @@ msgstr "Bitte entfernen Sie die Filter und stellen Sie die Sortierung auf \"Star
 msgid "Please select"
 msgstr "Bitte auswählen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:227
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:228
 msgid "Please select at least one ticket"
 msgstr "Bitte wählen Sie mindestens ein Ticket aus"
 
@@ -2577,7 +2576,7 @@ msgstr "Profil"
 msgid "Profile updated successfully"
 msgstr "Profil erfolgreich aktualisiert"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:172
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:173
 msgid "Promo {promo_code} code applied"
 msgstr "Aktionscode {promo_code} angewendet"
 
@@ -2668,11 +2667,11 @@ msgstr "Rückerstattung"
 msgid "Register"
 msgstr "Registrieren"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:404
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:412
 msgid "remove"
 msgstr "entfernen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:405
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:413
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -2845,7 +2844,7 @@ msgstr "Sekundäre Textfarbe"
 msgid "Secondary Text Color"
 msgstr "Sekundäre Textfarbe"
 
-#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:234
+#: src/components/common/AttendeeCheckInTable/QrScanner.tsx:235
 msgid "Select Camera"
 msgstr "Kamera auswählen"
 
@@ -2957,7 +2956,7 @@ msgstr "Verfügbare Ticketanzahl anzeigen"
 msgid "Show hidden questions"
 msgstr "Versteckte Fragen anzeigen"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:364
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:372
 msgid "Show more"
 msgstr "Zeig mehr"
 
@@ -3037,7 +3036,7 @@ msgstr "Entschuldigen Sie, beim Laden dieser Seite ist ein Fehler aufgetreten."
 msgid "Sorry, this order no longer exists."
 msgstr "Entschuldigung, diese Bestellung existiert nicht mehr."
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:236
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:237
 msgid "Sorry, this promo code is not recognized"
 msgstr "Dieser Aktionscode wird leider nicht erkannt"
 
@@ -3163,7 +3162,7 @@ msgstr "Standort erfolgreich aktualisiert"
 msgid "Successfully Updated Misc Settings"
 msgstr "Verschiedene Einstellungen erfolgreich aktualisiert"
 
-#: src/components/modals/EditPromoCodeModal/index.tsx:52
+#: src/components/modals/EditPromoCodeModal/index.tsx:53
 msgid "Successfully Updated Promo Code"
 msgstr "Promo-Code erfolgreich aktualisiert"
 
@@ -3211,8 +3210,8 @@ msgstr "Steuern"
 msgid "Taxes and Fees"
 msgstr "Steuern und Gebühren"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:132
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:180
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:133
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:181
 msgid "That promo code is invalid"
 msgstr "Dieser Aktionscode ist ungültig"
 
@@ -3238,7 +3237,7 @@ msgstr "Die Sprache, in der der Teilnehmer die E-Mails erhalten soll."
 msgid "The link you clicked is invalid."
 msgstr "Der Link, auf den Sie geklickt haben, ist ungültig."
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:350
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:358
 msgid "The maximum numbers number of tickets for {0}is {1}"
 msgstr "Die maximale Anzahl von Tickets für {0} ist {1}"
 
@@ -3270,7 +3269,7 @@ msgstr "Die Steuern und Gebühren, die auf dieses Ticket angewendet werden solle
 msgid "The title of the event that will be displayed in search engine results and when sharing on social media. By default, the event title will be used"
 msgstr "Der Titel der Veranstaltung, der in Suchmaschinenergebnissen und beim Teilen in sozialen Medien angezeigt wird. Standardmäßig wird der Veranstaltungstitel verwendet"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:260
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:261
 msgid "There are no tickets available for this event"
 msgstr "Für diese Veranstaltung sind keine Tickets verfügbar"
 
@@ -3515,7 +3514,6 @@ msgid "Tools"
 msgstr "Werkzeuge"
 
 #: src/components/common/OrderSummary/index.tsx:92
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:33
 msgid "Total"
 msgstr "Gesamt"
 
@@ -3564,7 +3562,7 @@ msgid "Unable to create question. Please check the your details"
 msgstr "Frage konnte nicht erstellt werden. Bitte überprüfen Sie Ihre Angaben"
 
 #: src/components/modals/CreateTicketModal/index.tsx:65
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:117
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:118
 msgid "Unable to create ticket. Please check the your details"
 msgstr "Ticket konnte nicht erstellt werden. Bitte überprüfen Sie Ihre Angaben"
 
@@ -3578,12 +3576,13 @@ msgstr "Vereinigte Staaten"
 
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:42
 #: src/components/forms/PromoCodeForm/index.tsx:85
+#: src/components/forms/PromoCodeForm/index.tsx:92
 #: src/components/forms/TicketForm/index.tsx:80
 #: src/components/forms/TicketForm/index.tsx:244
 msgid "Unlimited"
 msgstr "Unbegrenzt"
 
-#: src/components/routes/ticket-widget/SelectTickets/index.tsx:316
+#: src/components/routes/ticket-widget/SelectTickets/index.tsx:324
 msgid "Unlimited available"
 msgstr "Unbegrenzt verfügbar"
 
@@ -3808,7 +3807,7 @@ msgstr "Arbeiten"
 #: src/components/modals/CreateTicketModal/index.tsx:91
 #: src/components/modals/DuplicateEventModal/index.tsx:137
 #: src/components/modals/EditAttendeeModal/index.tsx:129
-#: src/components/modals/EditPromoCodeModal/index.tsx:84
+#: src/components/modals/EditPromoCodeModal/index.tsx:86
 #: src/components/modals/EditQuestionModal/index.tsx:99
 #: src/components/modals/EditTicketModal/index.tsx:104
 #: src/components/routes/auth/Register/index.tsx:99
