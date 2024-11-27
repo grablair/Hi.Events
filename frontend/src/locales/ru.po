@@ -257,7 +257,7 @@ msgstr ""
 #~ msgid "About hi.events"
 #~ msgstr ""
 
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:79
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:87
 msgid "About the event"
 msgstr ""
 
@@ -753,7 +753,7 @@ msgstr ""
 msgid "Canceling will cancel all tickets associated with this order, and release the tickets back into the available pool."
 msgstr ""
 
-#: src/components/common/AttendeeTicket/index.tsx:61
+#: src/components/common/AttendeeTicket/index.tsx:58
 msgid "Cancelled"
 msgstr ""
 
@@ -1020,7 +1020,7 @@ msgstr ""
 
 #: src/components/common/WidgetEditor/index.tsx:31
 #: src/components/common/WidgetEditor/index.tsx:217
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:36
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:50
 #: src/components/routes/ticket-widget/SelectTickets/index.tsx:394
 msgid "Continue"
 msgstr ""
@@ -1049,7 +1049,7 @@ msgstr ""
 msgid "Continue To Payment"
 msgstr ""
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 #: src/components/common/CopyButton/index.tsx:13
 msgid "Copied"
 msgstr ""
@@ -1070,7 +1070,7 @@ msgstr ""
 msgid "Copy details to all attendees"
 msgstr ""
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 msgid "Copy Link"
 msgstr ""
 
@@ -1812,12 +1812,13 @@ msgstr ""
 msgid "Forgot password?"
 msgstr ""
 
-#: src/components/common/AttendeeTicket/index.tsx:40
+#: src/components/common/AttendeeTicket/index.tsx:37
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:88
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:102
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:38
 #: src/components/routes/ticket-widget/SelectTickets/Prices/Tiered/index.tsx:54
 msgid "Free"
 msgstr ""
@@ -2166,6 +2167,10 @@ msgstr ""
 #: src/components/modals/CreateAttendeeModal/index.tsx:122
 msgid "Johnson"
 msgstr ""
+
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:85
+msgid "Jump to Pricing"
+msgstr "Перейти к Ценам"
 
 #: src/components/modals/CreateEventModal/index.tsx:104
 #~ msgid "KittenTech Conference {0}"
@@ -2964,7 +2969,7 @@ msgstr ""
 msgid "Primary Text Color"
 msgstr ""
 
-#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:71
 msgid "Print"
 msgstr ""
 
@@ -4116,6 +4121,7 @@ msgid "Tools"
 msgstr ""
 
 #: src/components/common/OrderSummary/index.tsx:92
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:33
 msgid "Total"
 msgstr ""
 

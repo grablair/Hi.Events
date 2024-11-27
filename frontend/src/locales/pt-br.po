@@ -201,7 +201,7 @@ msgstr "Uma única pergunta por pedido. Por exemplo, Qual é o nome de sua empre
 msgid "A standard tax, like VAT or GST"
 msgstr "Um imposto padrão, como IVA ou GST"
 
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:79
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:87
 msgid "About the event"
 msgstr "Sobre o evento"
 
@@ -615,7 +615,7 @@ msgstr "Cancelar pedido {0}"
 msgid "Canceling will cancel all tickets associated with this order, and release the tickets back into the available pool."
 msgstr "O cancelamento cancelará todos os tickets associados a esse pedido e liberará os tickets de volta para o pool disponível."
 
-#: src/components/common/AttendeeTicket/index.tsx:61
+#: src/components/common/AttendeeTicket/index.tsx:58
 msgid "Cancelled"
 msgstr "Cancelado"
 
@@ -865,7 +865,7 @@ msgstr "Cor de fundo do conteúdo"
 
 #: src/components/common/WidgetEditor/index.tsx:31
 #: src/components/common/WidgetEditor/index.tsx:217
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:36
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:50
 #: src/components/routes/ticket-widget/SelectTickets/index.tsx:394
 msgid "Continue"
 msgstr "Continuar"
@@ -894,7 +894,7 @@ msgstr "Continuar a configuração do Stripe Connect"
 msgid "Continue To Payment"
 msgstr "Continuar para o pagamento"
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 #: src/components/common/CopyButton/index.tsx:13
 msgid "Copied"
 msgstr "Copiado"
@@ -915,7 +915,7 @@ msgstr "Copiar URL de check-in"
 msgid "Copy details to all attendees"
 msgstr "Copie os detalhes para todos os participantes"
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 msgid "Copy Link"
 msgstr "Copiar link"
 
@@ -1577,12 +1577,13 @@ msgstr "O Flash não está disponível neste dispositivo"
 msgid "Forgot password?"
 msgstr "Esqueceu a senha?"
 
-#: src/components/common/AttendeeTicket/index.tsx:40
+#: src/components/common/AttendeeTicket/index.tsx:37
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:88
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:102
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:38
 #: src/components/routes/ticket-widget/SelectTickets/Prices/Tiered/index.tsx:54
 msgid "Free"
 msgstr "Grátis"
@@ -1875,6 +1876,10 @@ msgstr "João"
 #: src/components/modals/CreateAttendeeModal/index.tsx:122
 msgid "Johnson"
 msgstr "Johnson"
+
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:85
+msgid "Jump to Pricing"
+msgstr "Ir para Preços"
 
 #: src/components/forms/TicketForm/index.tsx:74
 msgid "Label"
@@ -2556,7 +2561,7 @@ msgstr "Cor primária"
 msgid "Primary Text Color"
 msgstr "Cor primária do texto"
 
-#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:71
 msgid "Print"
 msgstr "Imprimir"
 
@@ -3514,6 +3519,7 @@ msgid "Tools"
 msgstr "Ferramentas"
 
 #: src/components/common/OrderSummary/index.tsx:92
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:33
 msgid "Total"
 msgstr "Total"
 

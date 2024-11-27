@@ -201,7 +201,7 @@ msgstr "每份订单只有一个问题。例如：贵公司的名称是什么？
 msgid "A standard tax, like VAT or GST"
 msgstr "标准税，如增值税或消费税"
 
-#: src/components/layouts/EventHomepage/EventInformation/index.tsx:79
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:87
 msgid "About the event"
 msgstr "关于活动"
 
@@ -615,7 +615,7 @@ msgstr "取消订单 {0}"
 msgid "Canceling will cancel all tickets associated with this order, and release the tickets back into the available pool."
 msgstr "取消将取消与此订单相关的所有机票，并将机票放回可用票池。"
 
-#: src/components/common/AttendeeTicket/index.tsx:61
+#: src/components/common/AttendeeTicket/index.tsx:58
 msgid "Cancelled"
 msgstr "已取消"
 
@@ -865,7 +865,7 @@ msgstr "内容背景颜色"
 
 #: src/components/common/WidgetEditor/index.tsx:31
 #: src/components/common/WidgetEditor/index.tsx:217
-#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:36
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:50
 #: src/components/routes/ticket-widget/SelectTickets/index.tsx:394
 msgid "Continue"
 msgstr "继续"
@@ -894,7 +894,7 @@ msgstr "继续 Stripe 连接设置"
 msgid "Continue To Payment"
 msgstr "继续付款"
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 #: src/components/common/CopyButton/index.tsx:13
 msgid "Copied"
 msgstr "复制的"
@@ -915,7 +915,7 @@ msgstr "复制签到链接"
 msgid "Copy details to all attendees"
 msgstr "将详细信息抄送给所有与会者"
 
-#: src/components/common/AttendeeTicket/index.tsx:84
+#: src/components/common/AttendeeTicket/index.tsx:81
 msgid "Copy Link"
 msgstr "复制链接"
 
@@ -1577,12 +1577,13 @@ msgstr "该设备不支持闪存"
 msgid "Forgot password?"
 msgstr "忘记密码？"
 
-#: src/components/common/AttendeeTicket/index.tsx:40
+#: src/components/common/AttendeeTicket/index.tsx:37
 #: src/components/common/Currency/index.tsx:90
 #: src/components/common/OrderSummary/index.tsx:46
 #: src/components/common/OrderSummary/index.tsx:99
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:88
 #: src/components/common/TicketsTable/SortableTicket/index.tsx:102
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:38
 #: src/components/routes/ticket-widget/SelectTickets/Prices/Tiered/index.tsx:54
 msgid "Free"
 msgstr "免费"
@@ -1875,6 +1876,10 @@ msgstr "约翰"
 #: src/components/modals/CreateAttendeeModal/index.tsx:122
 msgid "Johnson"
 msgstr "约翰逊"
+
+#: src/components/layouts/EventHomepage/EventInformation/index.tsx:85
+msgid "Jump to Pricing"
+msgstr "跳转到价格"
 
 #: src/components/forms/TicketForm/index.tsx:74
 msgid "Label"
@@ -2556,7 +2561,7 @@ msgstr "原色"
 msgid "Primary Text Color"
 msgstr "主要文字颜色"
 
-#: src/components/common/AttendeeTicket/index.tsx:74
+#: src/components/common/AttendeeTicket/index.tsx:71
 msgid "Print"
 msgstr "打印"
 
@@ -3514,6 +3519,7 @@ msgid "Tools"
 msgstr "工具"
 
 #: src/components/common/OrderSummary/index.tsx:92
+#: src/components/layouts/Checkout/CheckoutFooter/index.tsx:33
 msgid "Total"
 msgstr "总计"
 
