@@ -211,7 +211,7 @@ class DuplicateEventService
                     ->setDiscountType($promoCode->getDiscountType())
                     ->setDiscount($promoCode->getDiscount())
                     ->setExpiryDate($promoCode->getExpiryDate())
-                    ->setMaxAllowedUsages($promoCode->getMaxAllowedUsages()),
+                    ->setMaxAllowedUsages($promoCode->getMaxAllowedUsages())
                     ->setTicketLimitPerUse($promoCode->getTicketLimitPerUse()),
             );
         }
