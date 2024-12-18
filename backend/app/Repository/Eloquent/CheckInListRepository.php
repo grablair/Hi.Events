@@ -6,6 +6,7 @@ use HiEvents\DomainObjects\CheckInListDomainObject;
 use HiEvents\DomainObjects\Generated\CapacityAssignmentDomainObjectAbstract;
 use HiEvents\DomainObjects\Generated\CheckInListDomainObjectAbstract;
 use HiEvents\DomainObjects\Status\AttendeeStatus;
+use HiEvents\DomainObjects\Status\OrderStatus;
 use HiEvents\Http\DTO\QueryParamsDTO;
 use HiEvents\Models\CheckInList;
 use HiEvents\Repository\DTO\CheckedInAttendeesCountDTO;
@@ -28,6 +29,8 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
 
     public function getCheckedInAttendeeCountById(int $checkInListId): CheckedInAttendeesCountDTO
     {
+        $attendeeActiveStatus = AttendeeStatus::ACTIVE->name;
+        $orderCompletedStatus = OrderStatus::COMPLETED->name;
         $sql = <<<SQL
             WITH valid_check_ins AS (
                 SELECT attendee_id, check_in_list_id
@@ -39,8 +42,11 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
                      SELECT a.id, tcil.check_in_list_id
                      FROM attendees a
                               JOIN ticket_check_in_lists tcil ON a.ticket_id = tcil.ticket_id
+                              JOIN orders o ON a.order_id = o.id
                      WHERE a.deleted_at IS NULL
                        AND tcil.deleted_at IS NULL
+                       AND a.status = '$attendeeActiveStatus'
+                       AND o.status = '$orderCompletedStatus'
                  )
             SELECT
                 cil.id AS check_in_list_id,
@@ -67,6 +73,7 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
     {
         $placeholders = implode(',', array_fill(0, count($checkInListIds), '?'));
         $attendeeActiveStatus = AttendeeStatus::ACTIVE->name;
+        $orderCompletedStatus = OrderStatus::COMPLETED->name;
 
         $sql = <<<SQL
             WITH valid_check_ins AS (
@@ -79,9 +86,11 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
                      SELECT a.id, tcil.check_in_list_id
                      FROM attendees a
                               JOIN ticket_check_in_lists tcil ON a.ticket_id = tcil.ticket_id
+                              JOIN orders o ON a.order_id = o.id
                      WHERE a.deleted_at IS NULL
                        AND tcil.deleted_at IS NULL
-                     AND a.status = '$attendeeActiveStatus'
+                       AND a.status = '$attendeeActiveStatus'
+                       AND o.status = '$orderCompletedStatus'
                  )
             SELECT
                 cil.id AS check_in_list_id,
