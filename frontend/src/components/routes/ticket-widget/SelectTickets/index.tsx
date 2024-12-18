@@ -338,7 +338,7 @@ const SelectTickets = (props: SelectTicketsProps) => {
                                                 )}
                                             </div>
                                             <span className={`hi-ticket-collapse-arrow`}>
-                                                <IconChevronRight className={!isTicketCollapsed ? "" : "open"}/>
+                                                <IconChevronRight className={isTicketCollapsed ? "" : "open"}/>
                                             </span>
                                         </UnstyledButton>
                                     </div>
