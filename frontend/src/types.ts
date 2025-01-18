@@ -642,3 +642,25 @@ export interface QuestionAnswer {
     first_name?: string;
     last_name?: string;
 }
+
+export interface CreateApiKeyRequest {
+    token_name: string;
+    abilities?: string[];
+    expires_at?: string;
+}
+
+export interface ApiKey {
+    id?: number;
+    name: string;
+    abilities: string[];
+    tokenable_id: number;
+    tokenable_type: string;
+    expires_at?: string;
+    created_at?: string;
+    updated_at?: string;
+}
+
+export interface NewApiKey {
+    accessToken: ApiKey;
+    plainTextToken: string;
+}
