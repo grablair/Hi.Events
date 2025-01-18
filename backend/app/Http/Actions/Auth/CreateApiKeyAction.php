@@ -1,8 +1,9 @@
 <?php
 
-namespace HiEvents\Http\Actions\Users;
+namespace HiEvents\Http\Actions\Auth;
 
 use App\Models\Sanctum\PersonalAccessToken;
+use HiEvents\DomainObjects\Enums\Role;
 use HiEvents\Http\Actions\BaseAction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ class CreateApiKeyAction extends BaseAction
 {
     public function __invoke(Request $request): JsonResponse
     {
+        $this->minimumAllowedRole(Role::ADMIN);
+
         $abilities = ['*'];
         $expiryDateTime = null;
         if ($request->abilities && count($request->abilities) > 0) {
