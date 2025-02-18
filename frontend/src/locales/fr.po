@@ -209,7 +209,7 @@ msgstr "À propos de l'événement"
 msgid "Accept Invitation"
 msgstr "Accepter l'invitation"
 
-#: src/components/routes/account/ManageAccount/index.tsx:24
+#: src/components/routes/account/ManageAccount/index.tsx:25
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:53
 msgid "Account"
 msgstr "Compte"
@@ -219,7 +219,7 @@ msgid "Account Name"
 msgstr "Nom du compte"
 
 #: src/components/common/GlobalMenu/index.tsx:32
-#: src/components/routes/account/ManageAccount/index.tsx:19
+#: src/components/routes/account/ManageAccount/index.tsx:20
 msgid "Account Settings"
 msgstr "Paramètres du compte"
 
@@ -1148,8 +1148,12 @@ msgid "Details"
 msgstr "Détails"
 
 #: src/components/forms/CapaciyAssigmentForm/index.tsx:26
-msgid "Disable this capacity track capacity without stopping ticket sales"
-msgstr "Désactivez cette capacité pour suivre la capacité sans arrêter la vente de billets"
+#~ msgid "Disable this capacity track capacity without stopping ticket sales"
+#~ msgstr "Désactivez cette capacité pour suivre la capacité sans arrêter la vente de billets"
+
+#: src/components/forms/CapaciyAssigmentForm/index.tsx:26
+msgid "Disabling this capacity will track sales but not stop them when the limit is reached"
+msgstr "Désactiver cette capacité permettra de suivre les ventes, mais ne les arrêtera pas lorsque la limite sera atteinte"
 
 #: src/components/common/PromoCodeTable/index.tsx:69
 msgid "Discount"
@@ -1248,8 +1252,8 @@ msgstr "Modifier {0}"
 msgid "Edit attendee"
 msgstr "Modifier un participant"
 
-#: src/components/modals/EditAttendeeModal/index.tsx:72
-#: src/components/modals/EditAttendeeModal/index.tsx:129
+#: src/components/modals/EditAttendeeModal/index.tsx:84
+#: src/components/modals/EditAttendeeModal/index.tsx:141
 msgid "Edit Attendee"
 msgstr "Modifier le participant"
 
@@ -1333,7 +1337,7 @@ msgid "Email & Notification Settings"
 msgstr "Paramètres de courrier électronique et de notification"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:128
-#: src/components/modals/EditAttendeeModal/index.tsx:91
+#: src/components/modals/EditAttendeeModal/index.tsx:103
 msgid "Email address"
 msgstr "Adresse e-mail"
 
@@ -1479,6 +1483,7 @@ msgstr "Date d'expiration"
 msgid "Expires"
 msgstr "Expire"
 
+#: src/components/forms/ApiKeyForm/index.tsx:47
 #: src/components/forms/PromoCodeForm/index.tsx:82
 msgid "Expiry Date"
 msgstr "Date d'expiration"
@@ -1536,7 +1541,7 @@ msgstr "Frais"
 
 #: src/components/common/QuestionsTable/index.tsx:206
 #: src/components/modals/CreateAttendeeModal/index.tsx:114
-#: src/components/modals/EditAttendeeModal/index.tsx:77
+#: src/components/modals/EditAttendeeModal/index.tsx:89
 #: src/components/routes/ticket-widget/CollectInformation/index.tsx:268
 #: src/components/routes/ticket-widget/CollectInformation/index.tsx:315
 msgid "First name"
@@ -1744,7 +1749,7 @@ msgstr "Concepteur de page d'accueil"
 msgid "Homepage Preview"
 msgstr "Aperçu de la page d'accueil"
 
-#: src/components/modals/EditAttendeeModal/index.tsx:78
+#: src/components/modals/EditAttendeeModal/index.tsx:90
 msgid "Homer"
 msgstr "Homère"
 
@@ -1896,7 +1901,7 @@ msgid "Last login"
 msgstr "Dernière connexion"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:121
-#: src/components/modals/EditAttendeeModal/index.tsx:84
+#: src/components/modals/EditAttendeeModal/index.tsx:96
 msgid "Last name"
 msgstr "Nom de famille"
 
@@ -2090,6 +2095,7 @@ msgstr "Nom placerat elementum..."
 #: src/components/modals/CreateEventModal/index.tsx:130
 #: src/components/modals/DuplicateEventModal/index.tsx:77
 #: src/components/routes/account/ManageAccount/sections/AccountSettings/index.tsx:63
+#: src/components/routes/account/ManageAccount/sections/ApiKeys/index.tsx:131
 #: src/components/routes/event/Settings/Sections/EventDetailsForm/index.tsx:72
 #: src/components/routes/ticket-widget/OrderSummaryAndTickets/index.tsx:58
 #: src/components/routes/welcome/index.tsx:83
@@ -2418,7 +2424,7 @@ msgid "patrick@acme.com"
 msgstr "patrick@acme.com"
 
 #: src/components/forms/StripeCheckoutForm/index.tsx:122
-#: src/components/routes/account/ManageAccount/index.tsx:38
+#: src/components/routes/account/ManageAccount/index.tsx:44
 #: src/components/routes/account/ManageAccount/sections/PaymentSettings/index.tsx:90
 msgid "Payment"
 msgstr "Paiement"
@@ -2866,7 +2872,7 @@ msgid "Select Ticket"
 msgstr "Sélectionnez un billet"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:163
-#: src/components/modals/EditAttendeeModal/index.tsx:117
+#: src/components/modals/EditAttendeeModal/index.tsx:129
 msgid "Select Ticket Tier"
 msgstr "Sélectionnez le niveau de billet"
 
@@ -2981,7 +2987,7 @@ msgstr "Montré au client avant son paiement"
 msgid "Shows common address fields, including country"
 msgstr "Affiche les champs d'adresse courants, y compris le pays"
 
-#: src/components/modals/EditAttendeeModal/index.tsx:85
+#: src/components/modals/EditAttendeeModal/index.tsx:97
 msgid "Simpson"
 msgstr "Simpson"
 
@@ -3131,7 +3137,7 @@ msgstr "Question créée avec succès"
 msgid "Successfully Created Ticket"
 msgstr "Ticket créé avec succès"
 
-#: src/components/modals/EditAttendeeModal/index.tsx:60
+#: src/components/modals/EditAttendeeModal/index.tsx:72
 msgid "Successfully updated attendee"
 msgstr "Participant mis à jour avec succès"
 
@@ -3197,7 +3203,7 @@ msgstr "E-mail d'assistance"
 msgid "Tax"
 msgstr "Impôt"
 
-#: src/components/routes/account/ManageAccount/index.tsx:27
+#: src/components/routes/account/ManageAccount/index.tsx:28
 #: src/components/routes/account/ManageAccount/sections/TaxSettings/index.tsx:16
 msgid "Tax & Fees"
 msgstr "Taxes et frais"
@@ -3414,7 +3420,7 @@ msgstr "billet"
 #: src/components/common/AttendeeDetails/index.tsx:46
 #: src/components/common/AttendeeTable/index.tsx:112
 #: src/components/modals/CreateAttendeeModal/index.tsx:146
-#: src/components/modals/EditAttendeeModal/index.tsx:108
+#: src/components/modals/EditAttendeeModal/index.tsx:120
 #: src/components/modals/ViewAttendeeModal/index.tsx:55
 msgid "Ticket"
 msgstr "Billet"
@@ -3432,7 +3438,7 @@ msgid "Ticket Sales"
 msgstr "La vente de billets"
 
 #: src/components/modals/CreateAttendeeModal/index.tsx:161
-#: src/components/modals/EditAttendeeModal/index.tsx:115
+#: src/components/modals/EditAttendeeModal/index.tsx:127
 msgid "Ticket Tier"
 msgstr "Niveau de billet"
 
@@ -3645,7 +3651,7 @@ msgstr "Utilisateur"
 msgid "User Management"
 msgstr "Gestion des utilisateurs"
 
-#: src/components/routes/account/ManageAccount/index.tsx:32
+#: src/components/routes/account/ManageAccount/index.tsx:33
 msgid "Users"
 msgstr "Utilisateurs"
 
@@ -3812,7 +3818,7 @@ msgstr "Fonctionnement"
 #: src/components/modals/CreateQuestionModal/index.tsx:73
 #: src/components/modals/CreateTicketModal/index.tsx:91
 #: src/components/modals/DuplicateEventModal/index.tsx:137
-#: src/components/modals/EditAttendeeModal/index.tsx:129
+#: src/components/modals/EditAttendeeModal/index.tsx:141
 #: src/components/modals/EditPromoCodeModal/index.tsx:86
 #: src/components/modals/EditQuestionModal/index.tsx:99
 #: src/components/modals/EditTicketModal/index.tsx:104
