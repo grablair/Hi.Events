@@ -41,11 +41,11 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
                  valid_attendees AS (
                      SELECT a.id, tcil.check_in_list_id
                      FROM attendees a
-                              JOIN ticket_check_in_lists tcil ON a.ticket_id = tcil.ticket_id
+                              JOIN product_check_in_lists tcil ON a.product_id = tcil.product_id
                               JOIN orders o ON a.order_id = o.id
                      WHERE a.deleted_at IS NULL
                        AND tcil.deleted_at IS NULL
-                       AND a.status = '$attendeeActiveStatus'
+                       AND a.status in ('ACTIVE', 'AWAITING_PAYMENT')
                        AND o.status = '$orderCompletedStatus'
                  )
             SELECT
@@ -85,11 +85,11 @@ class CheckInListRepository extends BaseRepository implements CheckInListReposit
                  valid_attendees AS (
                      SELECT a.id, tcil.check_in_list_id
                      FROM attendees a
-                              JOIN ticket_check_in_lists tcil ON a.ticket_id = tcil.ticket_id
+                              JOIN product_check_in_lists tcil ON a.ticket_id = tcil.ticket_id
                               JOIN orders o ON a.order_id = o.id
                      WHERE a.deleted_at IS NULL
                        AND tcil.deleted_at IS NULL
-                       AND a.status = '$attendeeActiveStatus'
+                       AND a.status in ('ACTIVE', 'AWAITING_PAYMENT')
                        AND o.status = '$orderCompletedStatus'
                  )
             SELECT

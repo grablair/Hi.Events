@@ -4,20 +4,21 @@ import {IconShoppingCartDown, IconShoppingCartUp} from "@tabler/icons-react";
 import classes from "./CheckoutFooter.module.scss";
 import {Event, Order} from "../../../../types.ts";
 import {CheckoutSidebar} from "../CheckoutSidebar";
-import {useState} from "react";
+import {ReactNode, useState} from "react";
 import classNames from "classnames";
 import {Currency} from "../../../common/Currency";
 
 
 interface ContinueButtonProps {
     isLoading: boolean;
-    buttonText?: string;
+    buttonContent?: ReactNode;
     order: Order;
     event: Event;
     isOrderComplete?: boolean;
+    onClick?: () => void;
 }
 
-export const CheckoutFooter = ({isLoading, buttonText, event, order, isOrderComplete = false, showFreeWhenZeroTotal = true}: ContinueButtonProps) => {
+export const CheckoutFooter = ({isLoading, buttonContent, event, order, onClick, isOrderComplete = false, showFreeWhenZeroTotal = true}: ContinueButtonProps) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
@@ -44,10 +45,11 @@ export const CheckoutFooter = ({isLoading, buttonText, event, order, isOrderComp
                         <Button
                             className={classes.continueButton}
                             loading={isLoading}
-                            type="submit"
                             size="md"
+                            type="submit"
+                            onClick={onClick}
                         >
-                            {buttonText || t`Continue`}
+                            {buttonContent || t`Continue`}
                         </Button>
                     )}
                     <ActionIcon onClick={() => setIsSidebarOpen(!isSidebarOpen)}

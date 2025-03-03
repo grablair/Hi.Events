@@ -3,6 +3,7 @@
 namespace HiEvents\Models;
 
 use HiEvents\DomainObjects\Generated\QuestionAnswerDomainObjectAbstract;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class QuestionAnswer extends BaseModel
 {
@@ -17,10 +18,20 @@ class QuestionAnswer extends BaseModel
     {
         return [
             QuestionAnswerDomainObjectAbstract::QUESTION_ID,
-            QuestionAnswerDomainObjectAbstract::TICKET_ID,
+            QuestionAnswerDomainObjectAbstract::PRODUCT_ID,
             QuestionAnswerDomainObjectAbstract::ORDER_ID,
             QuestionAnswerDomainObjectAbstract::ATTENDEE_ID,
             QuestionAnswerDomainObjectAbstract::ANSWER,
         ];
+    }
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function question(): BelongsTo
+    {
+        return $this->belongsTo(Question::class);
     }
 }

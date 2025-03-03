@@ -1,14 +1,30 @@
 @php use Carbon\Carbon; use HiEvents\Helper\Currency; use HiEvents\Helper\DateHelper; @endphp
 @php /** @var \HiEvents\DomainObjects\OrderDomainObject $order */ @endphp
 @php /** @var \HiEvents\DomainObjects\EventDomainObject $event */ @endphp
+@php /** @var \HiEvents\DomainObjects\EventSettingDomainObject $eventSettings */ @endphp
 @php /** @var string $orderUrl */ @endphp
 @php /** @see \HiEvents\Mail\Order\OrderSummary */ @endphp
 
 <x-mail::message>
 # {{ __('Your Order is Confirmed! ') }} 🎉
+
+@if($order->isOrderAwaitingOfflinePayment() === false)
 <p>
 {{ __('Congratulations! Your order for :eventTitle was successful. Please find your order details below.', ['eventTitle' => $event->getTitle()]) }}
 </p>
+@else
+<div>
+<p>
+{{ __('Your order is pending payment. Tickets have been issued but will not be valid until payment is received.') }}
+</p>
+
+<div style="border-radius: 4px; background-color: #d7e8f8; color: #204e84; margin-bottom: 1.5rem; padding: 1rem;">
+<h2>{{ __('Payment Instructions') }}</h2>
+{{ __('Please follow the instructions below to complete your payment.') }}
+{!! $eventSettings->getOfflinePaymentInstructions() !!}
+</div>
+</div>
+@endif
 
 <p>
 

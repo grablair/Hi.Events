@@ -7,8 +7,8 @@ namespace HiEvents\Http\Actions\Auth;
 use HiEvents\Exceptions\UnauthorizedException;
 use HiEvents\Http\Request\Auth\LoginRequest;
 use HiEvents\Http\ResponseCodes;
-use HiEvents\Services\Handlers\Auth\DTO\LoginCredentialsDTO;
-use HiEvents\Services\Handlers\Auth\LoginHandler;
+use HiEvents\Services\Application\Handlers\Auth\DTO\LoginCredentialsDTO;
+use HiEvents\Services\Application\Handlers\Auth\LoginHandler;
 use Illuminate\Http\JsonResponse;
 
 class LoginAction extends BaseAuthAction
@@ -26,7 +26,7 @@ class LoginAction extends BaseAuthAction
             $loginResponse = $this->loginHandler->handle(new LoginCredentialsDTO(
                 email: strtolower($request->validated('email')),
                 password: $request->validated('password'),
-                accountId: $request->validated('account_id'),
+                accountId: (int)$request->validated('account_id'),
             ));
         } catch (UnauthorizedException $e) {
             return $this->errorResponse(

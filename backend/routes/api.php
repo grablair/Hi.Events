@@ -21,8 +21,8 @@ use HiEvents\Http\Actions\Auth\GetUserInvitationAction;
 use HiEvents\Http\Actions\Auth\LoginAction;
 use HiEvents\Http\Actions\Auth\LogoutAction;
 use HiEvents\Http\Actions\Auth\RefreshTokenAction;
-use HiEvents\Http\Actions\Auth\ResetPasswordAction;
 use HiEvents\Http\Actions\Auth\RevokeApiKeyAction;
+use HiEvents\Http\Actions\Auth\ResetPasswordAction;
 use HiEvents\Http\Actions\Auth\ValidateResetPasswordTokenAction;
 use HiEvents\Http\Actions\CapacityAssignments\CreateCapacityAssignmentAction;
 use HiEvents\Http\Actions\CapacityAssignments\DeleteCapacityAssignmentAction;
@@ -73,6 +73,11 @@ use HiEvents\Http\Actions\Organizers\EditOrganizerAction;
 use HiEvents\Http\Actions\Organizers\GetOrganizerAction;
 use HiEvents\Http\Actions\Organizers\GetOrganizerEventsAction;
 use HiEvents\Http\Actions\Organizers\GetOrganizersAction;
+use HiEvents\Http\Actions\ProductCategories\CreateProductCategoryAction;
+use HiEvents\Http\Actions\ProductCategories\DeleteProductCategoryAction;
+use HiEvents\Http\Actions\ProductCategories\EditProductCategoryAction;
+use HiEvents\Http\Actions\ProductCategories\GetProductCategoriesAction;
+use HiEvents\Http\Actions\ProductCategories\GetProductCategoryAction;
 use HiEvents\Http\Actions\PromoCodes\CreatePromoCodeAction;
 use HiEvents\Http\Actions\PromoCodes\DeletePromoCodeAction;
 use HiEvents\Http\Actions\PromoCodes\GetPromoCodeAction;
@@ -86,16 +91,17 @@ use HiEvents\Http\Actions\Questions\GetQuestionAction;
 use HiEvents\Http\Actions\Questions\GetQuestionsAction;
 use HiEvents\Http\Actions\Questions\GetQuestionsPublicAction;
 use HiEvents\Http\Actions\Questions\SortQuestionsAction;
+use HiEvents\Http\Actions\Reports\GetReportAction;
 use HiEvents\Http\Actions\TaxesAndFees\CreateTaxOrFeeAction;
 use HiEvents\Http\Actions\TaxesAndFees\DeleteTaxOrFeeAction;
 use HiEvents\Http\Actions\TaxesAndFees\EditTaxOrFeeAction;
 use HiEvents\Http\Actions\TaxesAndFees\GetTaxOrFeeAction;
-use HiEvents\Http\Actions\Tickets\CreateTicketAction;
-use HiEvents\Http\Actions\Tickets\DeleteTicketAction;
-use HiEvents\Http\Actions\Tickets\EditTicketAction;
-use HiEvents\Http\Actions\Tickets\GetTicketAction;
-use HiEvents\Http\Actions\Tickets\GetTicketsAction;
-use HiEvents\Http\Actions\Tickets\SortTicketsAction;
+use HiEvents\Http\Actions\Products\CreateProductAction;
+use HiEvents\Http\Actions\Products\DeleteProductAction;
+use HiEvents\Http\Actions\Products\EditProductAction;
+use HiEvents\Http\Actions\Products\GetProductAction;
+use HiEvents\Http\Actions\Products\GetProductsAction;
+use HiEvents\Http\Actions\Products\SortProductsAction;
 use HiEvents\Http\Actions\Users\CancelEmailChangeAction;
 use HiEvents\Http\Actions\Users\ConfirmEmailAddressAction;
 use HiEvents\Http\Actions\Users\ConfirmEmailChangeAction;
@@ -144,60 +150,19 @@ $router->middleware(['auth:api'])->group(
 );
 
 /**
- * Routes accessible by users and API keys
+ * Logged In Routes
  */
 $router->middleware(['auth:sanctum'])->group(
     function (Router $router): void {
-        $router->get('/users', GetUsersAction::class);
+
         $router->get('/users/me', GetMeAction::class);
-        $router->get('/users/{user_id}', GetUserAction::class);
-
-        $router->get('/accounts/{account_id?}', GetAccountAction::class);
-
-        $router->get('/organizers', GetOrganizersAction::class);
-        $router->get('/organizers/{organizer_id}', GetOrganizerAction::class);
-        $router->get('/organizers/{organizer_id}/events', GetOrganizerEventsAction::class);
-
-        $router->get('/accounts/{account_id}/taxes-and-fees', GetTaxOrFeeAction::class);
-
-
-        $router->get('/events/{event_id}', GetEventAction::class);
-        $router->put('/events/{event_id}', UpdateEventAction::class);
-        $router->get('/events', GetEventsAction::class);
-        $router->get('/events/{event_id}/tickets/{ticket_id}', GetTicketAction::class);
-
-        $router->get('/events/{event_id}/tickets', GetTicketsAction::class);
-        $router->get('/events/{event_id}/check_in_stats', GetEventCheckInStatsAction::class);
-        $router->get('/events/{event_id}/stats', GetEventStatsAction::class);
-
-        $router->get('/events/{event_id}/attendees', GetAttendeesAction::class);
-        $router->get('/events/{event_id}/attendees/{attendee_id}', GetAttendeeAction::class);
-
-        $router->get('/events/{event_id}/orders', GetOrdersAction::class);
-        $router->get('/events/{event_id}/orders/{order_id}', GetOrderAction::class);
-
-        $router->get('/events/{event_id}/questions/{question_id}', GetQuestionAction::class);
-        $router->get('/events/{event_id}/questions', GetQuestionsAction::class);
-
-        $router->get('/events/{event_id}/images', GetEventImagesAction::class);
-
-        $router->get('/events/{event_id}/promo-codes', GetPromoCodesAction::class);
-        $router->get('/events/{event_id}/promo-codes/{promo_code_id}', GetPromoCodeAction::class);
-
-        $router->get('/events/{event_id}/messages', GetMessagesAction::class);
-
-        $router->get('/events/{event_id}/settings', GetEventSettingsAction::class);
-
-        $router->get('/events/{event_id}/capacity-assignments', GetCapacityAssignmentsAction::class);
-        $router->get('/events/{event_id}/capacity-assignments/{capacity_assignment_id}', GetCapacityAssignmentAction::class);
-
-        $router->get('/events/{event_id}/check-in-lists', GetCheckInListsAction::class);
-        $router->get('/events/{event_id}/check-in-lists/{check_in_list_id}', GetCheckInListAction::class);
 
         $router->middleware(['ability:users'])->group(
             function (Router $router): void {
                 $router->put('/users/me', UpdateMeAction::class);
                 $router->post('/users', CreateUserAction::class);
+                $router->get('/users', GetUsersAction::class);
+                $router->get('/users/{user_id}', GetUserAction::class);
                 $router->put('/users/{user_id}', UpdateUserAction::class);
                 $router->delete('/users/{user_id}', DeactivateUsersAction::class);
                 $router->post('/users/{user_id}/email-change/{token}', ConfirmEmailChangeAction::class);
@@ -211,6 +176,7 @@ $router->middleware(['auth:sanctum'])->group(
 
         $router->middleware(['ability:accounts'])->group(
             function (Router $router): void {
+                $router->get('/accounts/{account_id?}', GetAccountAction::class);
                 $router->put('/accounts/{account_id?}', UpdateAccountAction::class);
                 $router->post('/accounts/{account_id}/stripe/connect', CreateStripeConnectAccountAction::class);
             }
@@ -221,65 +187,149 @@ $router->middleware(['auth:sanctum'])->group(
                 $router->post('/organizers', CreateOrganizerAction::class);
                 // This is POST instead of PUT because you can't upload files via PUT in PHP (at least not easily)
                 $router->post('/organizers/{organizer_id}', EditOrganizerAction::class);
+                $router->get('/organizers', GetOrganizersAction::class);
+                $router->get('/organizers/{organizer_id}', GetOrganizerAction::class);
+                $router->get('/organizers/{organizer_id}/events', GetOrganizerEventsAction::class);
             }
         );
 
         $router->middleware(['ability:taxes-and-fees'])->group(
             function (Router $router): void {
                 $router->post('/accounts/{account_id}/taxes-and-fees', CreateTaxOrFeeAction::class);
+                $router->get('/accounts/{account_id}/taxes-and-fees', GetTaxOrFeeAction::class);
                 $router->put('/accounts/{account_id}/taxes-and-fees/{tax_or_fee_id}', EditTaxOrFeeAction::class);
                 $router->delete('/accounts/{account_id}/taxes-and-fees/{tax_or_fee_id}', DeleteTaxOrFeeAction::class);
             }
         );
 
-        $router->middleware(['ability:events'])->group(
+        $router->middleware(['ability:events,events-general'])->group(
             function (Router $router): void {
                 $router->post('/events', CreateEventAction::class);
+                $router->get('/events', GetEventsAction::class);
+                $router->get('/events/{event_id}', GetEventAction::class);
+                $router->put('/events/{event_id}', UpdateEventAction::class);
                 $router->put('/events/{event_id}/status', UpdateEventStatusAction::class);
                 $router->post('/events/{event_id}/duplicate', DuplicateEventAction::class);
+            }
+        );
 
-                $router->post('/events/{event_id}/tickets', CreateTicketAction::class);
-                $router->post('/events/{event_id}/tickets/sort', SortTicketsAction::class);
-                $router->put('/events/{event_id}/tickets/{ticket_id}', EditTicketAction::class);
-                $router->delete('/events/{event_id}/tickets/{ticket_id}', DeleteTicketAction::class);
+        $router->middleware(['ability:events,events-products'])->group(
+            function (Router $router): void {
+                $router->post('/events/{event_id}/product-categories', CreateProductCategoryAction::class);
+                $router->get('/events/{event_id}/product-categories', GetProductCategoriesAction::class);
+                $router->get('/events/{event_id}/product-categories/{category_id}', GetProductCategoryAction::class);
+                $router->put('/events/{event_id}/product-categories/{category_id}', EditProductCategoryAction::class);
+                $router->delete('/events/{event_id}/product-categories/{category_id}', DeleteProductCategoryAction::class);
 
+                $router->post('/events/{event_id}/products', CreateProductAction::class);
+                $router->post('/events/{event_id}/products/sort', SortProductsAction::class);
+                $router->put('/events/{event_id}/products/{ticket_id}', EditProductAction::class);
+                $router->get('/events/{event_id}/products/{ticket_id}', GetProductAction::class);
+                $router->delete('/events/{event_id}/products/{ticket_id}', DeleteProductAction::class);
+                $router->get('/events/{event_id}/products', GetProductsAction::class);
+            }
+        );
+
+        $router->middleware(['ability:events,events-stats'])->group(
+            function (Router $router): void {
+                $router->get('/events/{event_id}/check_in_stats', GetEventCheckInStatsAction::class);
+                $router->get('/events/{event_id}/stats', GetEventStatsAction::class);
+            }
+        );
+
+        $router->middleware(['ability:events,events-attendees'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/attendees', CreateAttendeeAction::class);
+                $router->get('/events/{event_id}/attendees', GetAttendeesAction::class);
+                $router->get('/events/{event_id}/attendees/{attendee_id}', GetAttendeeAction::class);
                 $router->put('/events/{event_id}/attendees/{attendee_id}', EditAttendeeAction::class);
                 $router->patch('/events/{event_id}/attendees/{attendee_id}', PartialEditAttendeeAction::class);
                 $router->post('/events/{event_id}/attendees/export', ExportAttendeesAction::class);
                 $router->post('/events/{event_id}/attendees/{attendee_public_id}/resend-ticket', ResendAttendeeTicketAction::class);
                 $router->post('/events/{event_id}/attendees/{attendee_public_id}/check_in', CheckInAttendeeAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-orders'])->group(
+            function (Router $router): void {
+                $router->get('/events/{event_id}/orders', GetOrdersAction::class);
+                $router->get('/events/{event_id}/orders/{order_id}', GetOrderAction::class);
                 $router->post('/events/{event_id}/orders/{order_id}/message', MessageOrderAction::class);
                 $router->post('/events/{event_id}/orders/{order_id}/refund', RefundOrderAction::class);
                 $router->post('/events/{event_id}/orders/{order_id}/resend_confirmation', ResendOrderConfirmationAction::class);
                 $router->post('/events/{event_id}/orders/{order_id}/cancel', CancelOrderAction::class);
                 $router->post('/events/{event_id}/orders/export', ExportOrdersAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-questions'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/questions', CreateQuestionAction::class);
                 $router->put('/events/{event_id}/questions/{question_id}', EditQuestionAction::class);
+                $router->get('/events/{event_id}/questions/{question_id}', GetQuestionAction::class);
                 $router->delete('/events/{event_id}/questions/{question_id}', DeleteQuestionAction::class);
+                $router->get('/events/{event_id}/questions', GetQuestionsAction::class);
                 $router->post('/events/{event_id}/questions/export', ExportOrdersAction::class);
                 $router->post('/events/{event_id}/questions/sort', SortQuestionsAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-images'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/images', CreateEventImageAction::class);
+                $router->get('/events/{event_id}/images', GetEventImagesAction::class);
                 $router->delete('/events/{event_id}/images/{image_id}', DeleteEventImageAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-promo-codes'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/promo-codes', CreatePromoCodeAction::class);
                 $router->put('/events/{event_id}/promo-codes/{promo_code_id}', UpdatePromoCodeAction::class);
+                $router->get('/events/{event_id}/promo-codes', GetPromoCodesAction::class);
+                $router->get('/events/{event_id}/promo-codes/{promo_code_id}', GetPromoCodeAction::class);
                 $router->delete('/events/{event_id}/promo-codes/{promo_code_id}', DeletePromoCodeAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-messages'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/messages', SendMessageAction::class);
+                $router->get('/events/{event_id}/messages', GetMessagesAction::class);
+            }
+        );
+
+        $router->middleware(['ability:events,events-settings'])->group(
+            function (Router $router): void {
+                $router->get('/events/{event_id}/settings', GetEventSettingsAction::class);
                 $router->put('/events/{event_id}/settings', EditEventSettingsAction::class);
                 $router->patch('/events/{event_id}/settings', PartialEditEventSettingsAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-capacity-assignments'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/capacity-assignments', CreateCapacityAssignmentAction::class);
+                $router->get('/events/{event_id}/capacity-assignments', GetCapacityAssignmentsAction::class);
+                $router->get('/events/{event_id}/capacity-assignments/{capacity_assignment_id}', GetCapacityAssignmentAction::class);
                 $router->put('/events/{event_id}/capacity-assignments/{capacity_assignment_id}', UpdateCapacityAssignmentAction::class);
                 $router->delete('/events/{event_id}/capacity-assignments/{capacity_assignment_id}', DeleteCapacityAssignmentAction::class);
+            }
+        );
 
+        $router->middleware(['ability:events,events-check-in-lists'])->group(
+            function (Router $router): void {
                 $router->post('/events/{event_id}/check-in-lists', CreateCheckInListAction::class);
+                $router->get('/events/{event_id}/check-in-lists', GetCheckInListsAction::class);
+                $router->get('/events/{event_id}/check-in-lists/{check_in_list_id}', GetCheckInListAction::class);
                 $router->put('/events/{event_id}/check-in-lists/{check_in_list_id}', UpdateCheckInListAction::class);
                 $router->delete('/events/{event_id}/check-in-lists/{check_in_list_id}', DeleteCheckInListAction::class);
+            }
+        );
+
+        $router->middleware(['ability:events,events-reports'])->group(
+            function (Router $router): void {
+                $router->get('/events/{event_id}/reports/{report_type}', GetReportAction::class);
             }
         );
     }
@@ -293,8 +343,8 @@ $router->prefix('/public')->group(
         // Events
         $router->get('/events/{event_id}', GetEventPublicAction::class);
 
-        // Tickets
-        $router->get('/events/{event_id}/tickets', GetEventPublicAction::class);
+        // Products
+        $router->get('/events/{event_id}/products', GetEventPublicAction::class);
 
         // Orders
         $router->post('/events/{event_id}/order', CreateOrderActionPublic::class);
