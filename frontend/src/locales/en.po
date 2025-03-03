@@ -1730,8 +1730,8 @@ msgstr ""
 "How many minutes the customer has to complete their order. We recommend at "
 "least 15 minutes"
 
-msgid "How many tickets can be discounted per order with this code?"
-msgstr "How many tickets can be discounted per order with this code?"
+msgid "How many products can be discounted per order with this code?"
+msgstr "How many products can be discounted per order with this code?"
 
 msgid "How many times can this code be used?"
 msgstr "How many times can this code be used?"

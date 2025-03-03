@@ -14,7 +14,7 @@ class UpsertPromoCodeDTO
         public readonly ?float                    $discount,
         public readonly ?string                   $expiry_date,
         public readonly ?int                      $max_allowed_usages,
-        public readonly ?int                      $ticket_limit_per_use,
+        public readonly ?int                      $product_limit_per_use,
     )
     {
     }

@@ -1638,8 +1638,8 @@ msgid ""
 "least 15 minutes"
 msgstr ""
 
-msgid "How many tickets can be discounted per order with this code?"
-msgstr "Сколько билетов можно получить со скидкой на один заказ с этим кодом?"
+msgid "How many products can be discounted per order with this code?"
+msgstr ""
 
 msgid "How many times can this code be used?"
 msgstr ""

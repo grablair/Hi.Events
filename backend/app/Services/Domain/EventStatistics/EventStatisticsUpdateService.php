@@ -121,9 +121,9 @@ readonly class EventStatisticsUpdateService
             $this->promoCodeRepository->increment(
                 id: $order->getPromoCodeId(),
                 column: PromoCodeDomainObjectAbstract::ATTENDEE_USAGE_COUNT,
-                amount: $order->getOrderItems()?->sum('quantity'), # TODO: Does this increment by all tickets even if 
+                amount: $order->getOrderItems()?->sum('quantity'), # TODO: Does this increment by all products even if 
                                                                    # they don't qualify for the promo code? Thes also
-                                                                   # needs to be updated for ticket_limit_per_use 
+                                                                   # needs to be updated for product_limit_per_use 
             );
         }
     }

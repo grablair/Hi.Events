@@ -48,7 +48,7 @@ class PromoCodesExport implements FromCollection, WithHeadings, WithMapping, Wit
             $discountCode->getDiscount(),
             $discountCode->getDiscountType(),
             $discountCode->getMaxAllowedUsages(),
-            $discountCode->getTicketLimitPerUse(),
+            $discountCode->getProductLimitPerUse(),
             $discountCode->getExpiryDate(),
             $discountCode->getEventId(),
             $discountCode->getCreatedAt(),

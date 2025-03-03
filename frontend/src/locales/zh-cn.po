@@ -1661,7 +1661,7 @@ msgid ""
 "least 15 minutes"
 msgstr "客户有多少分钟来完成订单。我们建议至少 15 分钟"
 
-msgid "How many tickets can be discounted per order with this code?"
+msgid "How many products can be discounted per order with this code?"
 msgstr "使用此代码每个订单可以打折多少张票？"
 
 msgid "How many times can this code be used?"

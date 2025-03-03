@@ -30,12 +30,8 @@ readonly class CreatePromoCodeHandler
                 ->setDiscount($promoCodeDTO->discount)
                 ->setExpiryDate($promoCodeDTO->expiry_date)
                 ->setMaxAllowedUsages($promoCodeDTO->max_allowed_usages)
-<<<<<<< HEAD:backend/app/Services/Handlers/PromoCode/CreatePromoCodeHandler.php
-                ->setApplicableTicketIds($promoCodeDTO->applicable_ticket_ids)
-                ->setTicketLimitPerUse($promoCodeDTO->ticket_limit_per_use)
-=======
                 ->setApplicableProductIds($promoCodeDTO->applicable_product_ids)
->>>>>>> develop:backend/app/Services/Application/Handlers/PromoCode/CreatePromoCodeHandler.php
+                ->setProductLimitPerUse($promoCodeDTO->product_limit_per_use)
         );
     }
 }

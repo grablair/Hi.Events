@@ -1785,8 +1785,8 @@ msgstr ""
 "De combien de minutes le client dispose pour finaliser sa commande. Nous "
 "recommandons au moins 15 minutes"
 
-msgid "How many tickets can be discounted per order with this code?"
-msgstr "Combien de billets peuvent être réduits par commande avec ce code?"
+msgid "How many products can be discounted per order with this code?"
+msgstr "Combien de produits peuvent être réduits par commande avec ce code?"
 
 msgid "How many times can this code be used?"
 msgstr "Combien de fois ce code peut-il être utilisé ?"
