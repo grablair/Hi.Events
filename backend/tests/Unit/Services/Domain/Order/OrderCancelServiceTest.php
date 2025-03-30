@@ -3,7 +3,6 @@
 namespace Tests\Unit\Services\Domain\Order;
 
 use HiEvents\DomainObjects\AttendeeDomainObject;
-use HiEvents\DomainObjects\Enums\WebhookEventType;
 use HiEvents\DomainObjects\EventDomainObject;
 use HiEvents\DomainObjects\EventSettingDomainObject;
 use HiEvents\DomainObjects\OrderDomainObject;
@@ -14,7 +13,9 @@ use HiEvents\Repository\Interfaces\EventRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Services\Domain\Order\OrderCancelService;
 use HiEvents\Services\Domain\Product\ProductQuantityUpdateService;
-use HiEvents\Services\Infrastructure\Webhook\WebhookDispatchService;
+use HiEvents\Services\Infrastructure\DomainEvents\DomainEventDispatcherService;
+use HiEvents\Services\Infrastructure\DomainEvents\Enums\DomainEventType;
+use HiEvents\Services\Infrastructure\DomainEvents\Events\OrderEvent;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Collection;
@@ -31,7 +32,7 @@ class OrderCancelServiceTest extends TestCase
     private DatabaseManager $databaseManager;
     private ProductQuantityUpdateService $productQuantityService;
     private OrderCancelService $service;
-    private WebhookDispatchService $webhookDispatchService;
+    private DomainEventDispatcherService $domainEventDispatcherService;
 
     protected function setUp(): void
     {
@@ -43,7 +44,7 @@ class OrderCancelServiceTest extends TestCase
         $this->orderRepository = m::mock(OrderRepositoryInterface::class);
         $this->databaseManager = m::mock(DatabaseManager::class);
         $this->productQuantityService = m::mock(ProductQuantityUpdateService::class);
-        $this->webhookDispatchService = m::mock(WebhookDispatchService::class);
+        $this->domainEventDispatcherService = m::mock(DomainEventDispatcherService::class);
 
         $this->service = new OrderCancelService(
             mailer: $this->mailer,
@@ -52,7 +53,7 @@ class OrderCancelServiceTest extends TestCase
             orderRepository: $this->orderRepository,
             databaseManager: $this->databaseManager,
             productQuantityService: $this->productQuantityService,
-            webhookDispatchService: $this->webhookDispatchService,
+            domainEventDispatcherService: $this->domainEventDispatcherService,
         );
     }
 
@@ -62,6 +63,8 @@ class OrderCancelServiceTest extends TestCase
         $order->shouldReceive('getEventId')->andReturn(1);
         $order->shouldReceive('getId')->andReturn(1);
         $order->shouldReceive('getEmail')->andReturn('customer@example.com');
+        $order->shouldReceive('isOrderAwaitingOfflinePayment')->andReturn(false);
+
         $order->shouldReceive('getLocale')->andReturn('en');
 
         $attendees = new Collection([
@@ -74,7 +77,6 @@ class OrderCancelServiceTest extends TestCase
             ->once()
             ->with([
                 'order_id' => $order->getId(),
-                'status' => AttendeeStatus::ACTIVE->name,
             ])
             ->andReturn($attendees);
 
@@ -105,12 +107,92 @@ class OrderCancelServiceTest extends TestCase
             return $mail instanceof OrderCancelled;
         });
 
-        $this->webhookDispatchService->shouldReceive('queueOrderWebhook')
-            ->with(WebhookEventType::ORDER_CANCELLED, 1)
+        $this->domainEventDispatcherService->shouldReceive('dispatch')
+            ->withArgs(function (OrderEvent $event) use ($order) {
+                return $event->type === DomainEventType::ORDER_CANCELLED
+                    && $event->orderId === $order->getId();
+            })
             ->once();
 
         $this->databaseManager->shouldReceive('transaction')->once()->andReturnUsing(function ($callback) {
             $callback();
+        });
+
+        $attendees->each(function ($attendee) {
+            $attendee->shouldReceive('getStatus')->andReturn(AttendeeStatus::ACTIVE->name);
+        });
+
+        try {
+            $this->service->cancelOrder($order);
+        } catch (Throwable $e) {
+            $this->fail("Failed to cancel order: " . $e->getMessage());
+        }
+
+        $this->assertTrue(true, "Order cancellation proceeded without throwing an exception.");
+    }
+
+    public function testCancelOrderAwaitingOfflinePayment(): void
+    {
+        $order = m::mock(OrderDomainObject::class);
+        $order->shouldReceive('getEventId')->andReturn(1);
+        $order->shouldReceive('getId')->andReturn(1);
+        $order->shouldReceive('getEmail')->andReturn('customer@example.com');
+        $order->shouldReceive('isOrderAwaitingOfflinePayment')->andReturn(true);
+        $order->shouldReceive('getLocale')->andReturn('en');
+
+        $attendees = new Collection([
+            m::mock(AttendeeDomainObject::class)->shouldReceive('getproductPriceId')->andReturn(1)->mock(),
+            m::mock(AttendeeDomainObject::class)->shouldReceive('getproductPriceId')->andReturn(2)->mock(),
+        ]);
+
+        $this->attendeeRepository
+            ->shouldReceive('findWhere')
+            ->once()
+            ->with([
+                'order_id' => $order->getId(),
+            ])
+            ->andReturn($attendees);
+
+        $this->attendeeRepository->shouldReceive('updateWhere')->once();
+
+        $this->productQuantityService->shouldReceive('decreaseQuantitySold')->twice();
+
+        $this->orderRepository->shouldReceive('updateWhere')->once();
+
+        $event = new EventDomainObject();
+        $event->setEventSettings(new EventSettingDomainObject());
+        $this->eventRepository
+            ->shouldReceive('loadRelation')
+            ->once()
+            ->andReturnSelf()
+            ->getMock()
+            ->shouldReceive('findById')->once()->andReturn($event);
+
+        $this->mailer->shouldReceive('to')
+            ->once()
+            ->andReturnSelf();
+
+        $this->mailer->shouldReceive('locale')
+            ->once()
+            ->andReturnSelf();
+
+        $this->mailer->shouldReceive('send')->once()->withArgs(function ($mail) {
+            return $mail instanceof OrderCancelled;
+        });
+
+        $this->domainEventDispatcherService->shouldReceive('dispatch')
+            ->withArgs(function (OrderEvent $event) use ($order) {
+                return $event->type === DomainEventType::ORDER_CANCELLED
+                    && $event->orderId === $order->getId();
+            })
+            ->once();
+
+        $this->databaseManager->shouldReceive('transaction')->once()->andReturnUsing(function ($callback) {
+            $callback();
+        });
+
+        $attendees->each(function ($attendee) {
+            $attendee->shouldReceive('getStatus')->andReturn(AttendeeStatus::AWAITING_PAYMENT->name);
         });
 
         try {

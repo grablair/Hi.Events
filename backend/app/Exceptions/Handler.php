@@ -3,11 +3,8 @@
 namespace HiEvents\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-<<<<<<< HEAD
 use Laravel\Sanctum\Exceptions\MissingAbilityException;
-=======
 use Sentry\Laravel\Facade as Sentry;
->>>>>>> develop
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Throwable;
 

@@ -103,7 +103,10 @@ const SelectProducts = (props: SelectProductsProps) => {
             .then(() => {
                 const url = '/checkout/' + eventId + '/' + data.data.short_id + '/details';
                 if (props.widgetMode === 'embedded') {
-                    window.open(url, '_blank');
+                    window.open(
+                        url + '?session_identifier=' + data.data.session_identifier + '&utm_source=embedded_widget',
+                        '_blank'
+                    );
                     setOrderInProcessOverlayVisible(true);
                     return;
                 }
@@ -253,16 +256,16 @@ const SelectProducts = (props: SelectProductsProps) => {
     let productIndex = 0;
 
     return (
-        (<div className={'hi-product-widget-container'}
-              ref={resizeRef}
-              style={{
-                  '--widget-background-color': props.colors?.background,
-                  '--widget-primary-color': props.colors?.primary,
-                  '--widget-primary-text-color': props.colors?.primaryText,
-                  '--widget-secondary-color': props.colors?.secondary,
-                  '--widget-secondary-text-color': props.colors?.secondaryText,
-                  '--widget-padding': props?.padding,
-              } as React.CSSProperties}>
+        <div className={'hi-product-widget-container'}
+             ref={resizeRef}
+             style={{
+                 '--widget-background-color': props.colors?.background,
+                 '--widget-primary-color': props.colors?.primary,
+                 '--widget-primary-text-color': props.colors?.primaryText,
+                 '--widget-secondary-color': props.colors?.secondary,
+                 '--widget-secondary-text-color': props.colors?.secondaryText,
+                 '--widget-padding': props?.padding,
+             } as React.CSSProperties}>
             {!productAreAvailable && (
                 <div className={classNames(['hi-no-products'])}>
                     <p className={classNames(['hi-no-products-message'])}>
@@ -280,7 +283,7 @@ const SelectProducts = (props: SelectProductsProps) => {
                             </h4>
                             <Trans>
                                 If a new tab did not open, please {' '}
-                                <a href={'/checkout/' + eventId + '/' + productMutation.data?.data.short_id + '/details'}
+                                <a href={'/checkout/' + eventId + '/' + productMutation.data?.data.short_id + '/details' + '?session_identifier=' + productMutation.data?.data.session_identifier}
                                    target={'_blank'} rel={'noopener noreferrer'}>
                                     <b>{t`click here`}</b>.
                                 </a>
@@ -497,7 +500,7 @@ const SelectProducts = (props: SelectProductsProps) => {
             <PoweredByFooter style={{
                 'color': props.colors?.primaryText || '#000',
             }}/>
-        </div>)
+        </div>
     );
 }
 

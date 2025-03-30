@@ -23,12 +23,14 @@ use HiEvents\Repository\Eloquent\OrderItemRepository;
 use HiEvents\Repository\Eloquent\OrderRefundRepository;
 use HiEvents\Repository\Eloquent\OrderRepository;
 use HiEvents\Repository\Eloquent\OrganizerRepository;
+use HiEvents\Repository\Eloquent\OutgoingMessageRepository;
 use HiEvents\Repository\Eloquent\PasswordResetRepository;
 use HiEvents\Repository\Eloquent\PasswordResetTokenRepository;
 use HiEvents\Repository\Eloquent\ProductCategoryRepository;
 use HiEvents\Repository\Eloquent\ProductPriceRepository;
 use HiEvents\Repository\Eloquent\ProductRepository;
 use HiEvents\Repository\Eloquent\PromoCodeRepository;
+use HiEvents\Repository\Eloquent\QuestionAndAnswerViewRepository;
 use HiEvents\Repository\Eloquent\QuestionAnswerRepository;
 use HiEvents\Repository\Eloquent\QuestionRepository;
 use HiEvents\Repository\Eloquent\StripeCustomerRepository;
@@ -56,12 +58,14 @@ use HiEvents\Repository\Interfaces\OrderItemRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRefundRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrderRepositoryInterface;
 use HiEvents\Repository\Interfaces\OrganizerRepositoryInterface;
+use HiEvents\Repository\Interfaces\OutgoingMessageRepositoryInterface;
 use HiEvents\Repository\Interfaces\PasswordResetRepositoryInterface;
 use HiEvents\Repository\Interfaces\PasswordResetTokenRepositoryInterface;
 use HiEvents\Repository\Interfaces\ProductCategoryRepositoryInterface;
 use HiEvents\Repository\Interfaces\ProductPriceRepositoryInterface;
 use HiEvents\Repository\Interfaces\ProductRepositoryInterface;
 use HiEvents\Repository\Interfaces\PromoCodeRepositoryInterface;
+use HiEvents\Repository\Interfaces\QuestionAndAnswerViewRepositoryInterface;
 use HiEvents\Repository\Interfaces\QuestionAnswerRepositoryInterface;
 use HiEvents\Repository\Interfaces\QuestionRepositoryInterface;
 use HiEvents\Repository\Interfaces\StripeCustomerRepositoryInterface;
@@ -111,6 +115,8 @@ class RepositoryServiceProvider extends ServiceProvider
         WebhookLogRepositoryInterface::class => WebhookLogRepository::class,
         OrderApplicationFeeRepositoryInterface::class => OrderApplicationFeeRepository::class,
         AccountConfigurationRepositoryInterface::class => AccountConfigurationRepository::class,
+        QuestionAndAnswerViewRepositoryInterface::class => QuestionAndAnswerViewRepository::class,
+        OutgoingMessageRepositoryInterface::class => OutgoingMessageRepository::class,
     ];
 
     public function register(): void

@@ -62,7 +62,10 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function all(array $columns = self::DEFAULT_COLUMNS): Collection
     {
-        return $this->handleResults($this->model->all($columns));
+        $models = $this->model->all($columns);
+        $this->resetModel();
+
+        return $this->handleResults($models);
     }
 
     public function paginate(
@@ -96,7 +99,7 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function simplePaginateWhere(
         array $where,
-        int   $limit = null,
+        ?int   $limit = null,
         array $columns = self::DEFAULT_COLUMNS,
     ): Paginator
     {
@@ -121,12 +124,15 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function findById(int $id, array $columns = self::DEFAULT_COLUMNS): DomainObjectInterface
     {
-        return $this->handleSingleResult($this->model->findOrFail($id, $columns));
+        $model = $this->model->findOrFail($id, $columns);
+        $this->resetModel();
+
+        return $this->handleSingleResult($model);
     }
 
     public function findFirstByField(
         string $field,
-        string $value = null,
+        ?string $value = null,
         array  $columns = ['*']
     ): ?DomainObjectInterface
     {
@@ -138,7 +144,10 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function findFirst(int $id, array $columns = self::DEFAULT_COLUMNS): ?DomainObjectInterface
     {
-        return $this->handleSingleResult($this->model->findOrFail($id, $columns));
+        $model = $this->model->findOrFail($id, $columns);
+        $this->resetModel();
+
+        return $this->handleSingleResult($model);
     }
 
     public function findWhere(
