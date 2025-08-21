@@ -328,6 +328,18 @@ export const router: RouteObject[] = [
         path: "/event/:eventId/:eventSlug",
         loader: async ({params, request}) => {
             try {
+                switch (params.eventId) {
+                case 19:
+                    window.location = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
+                    break;
+                case 20:
+                    window.location = "https://rentoncivictheatre.org/dracula/";
+                    break;
+                case 21:
+                    window.location = "https://rentoncivictheatre.org/annie/";
+                    break;
+                }
+
                 const url = new URL(request.url)
                 const queryParams = new URLSearchParams(url.search);
                 const promoCode = queryParams.get("promo_code") ?? null
