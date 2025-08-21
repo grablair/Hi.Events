@@ -49,6 +49,18 @@ const EventHomepage = ({colors, continueButtonText, backgroundType, ...loaderDat
         return <HomepageInfoMessage message={t`This event is not available.`}/>;
     }
 
+    switch (event.id) {
+    case 19:
+        window.location.href = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
+        break;
+    case 20:
+        window.location.href = "https://rentoncivictheatre.org/dracula/";
+        break;
+    case 21:
+        window.location.href = "https://rentoncivictheatre.org/annie/";
+        break;
+    }
+
     const coverImage = eventCoverImageUrl(event);
 
     return (
