@@ -10,6 +10,7 @@ import {EventDocumentHead} from "../../common/EventDocumentHead";
 import {eventCoverImageUrl} from "../../../utilites/urlHelper.ts";
 import {Event} from "../../../types.ts";
 import {HomepageInfoMessage} from "../../common/HomepageInfoMessage";
+import {useEffect} from "react";
 
 interface EventHomepageProps {
     colors?: {
