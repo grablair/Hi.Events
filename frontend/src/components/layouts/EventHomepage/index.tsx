@@ -30,6 +30,22 @@ interface EventHomepageProps {
 const EventHomepage = ({colors, continueButtonText, backgroundType, ...loaderData}: EventHomepageProps) => {
     const {event, promoCodeValid, promoCode} = loaderData;
 
+    useEffect(() => {
+        if (!event) return;
+
+        switch (event.id) {
+        case 19:
+            window.location.href = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
+            break;
+        case 20:
+            window.location.href = "https://rentoncivictheatre.org/dracula/";
+            break;
+        case 21:
+            window.location.href = "https://rentoncivictheatre.org/annie/";
+            break;
+        }
+    }, [event]);
+
     const styleOverrides = {
         "--homepage-body-background-color":
             colors?.bodyBackground || event?.settings?.homepage_body_background_color,
@@ -47,18 +63,6 @@ const EventHomepage = ({colors, continueButtonText, backgroundType, ...loaderDat
 
     if (!event) {
         return <HomepageInfoMessage message={t`This event is not available.`}/>;
-    }
-
-    switch (event.id) {
-    case 19:
-        window.location.href = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
-        break;
-    case 20:
-        window.location.href = "https://rentoncivictheatre.org/dracula/";
-        break;
-    case 21:
-        window.location.href = "https://rentoncivictheatre.org/annie/";
-        break;
     }
 
     const coverImage = eventCoverImageUrl(event);
