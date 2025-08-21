@@ -330,13 +330,13 @@ export const router: RouteObject[] = [
             try {
                 switch (params.eventId) {
                 case 19:
-                    window.location = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
+                    window.location.href = "https://rentoncivictheatre.org/little-women-the-broadway-musical/";
                     break;
                 case 20:
-                    window.location = "https://rentoncivictheatre.org/dracula/";
+                    window.location.href = "https://rentoncivictheatre.org/dracula/";
                     break;
                 case 21:
-                    window.location = "https://rentoncivictheatre.org/annie/";
+                    window.location.href = "https://rentoncivictheatre.org/annie/";
                     break;
                 }
 
